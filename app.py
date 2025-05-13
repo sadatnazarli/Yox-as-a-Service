@@ -8,7 +8,7 @@ app.config['JSON_AS_ASCII'] = False
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('/templates/index.html')
 
 def get_excuse_by_category(category_key):
     ad = request.args.get('ad')
