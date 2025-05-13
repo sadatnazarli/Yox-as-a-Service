@@ -2,8 +2,11 @@ from flask import Flask, jsonify, request, render_template
 import random
 import os
 from excuses import all_excuses
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
+
 app.config['JSON_AS_ASCII'] = False
 
 @app.route('/', methods=['GET'])
@@ -13,17 +16,16 @@ def index():
 def get_excuse_by_category(category_key):
     ad = request.args.get('ad')
 
-    if category_key not in all_excuses:
-        return jsonify({"xeta": "Belə bir kateqoriya tapılmadı.", "status_kodu": 404}), 404
-
-    excuses_list = all_excuses[category_key]
-
+    excuses_list = all_excuses.get(category_key, all_excuses.get("general", []))
     if not excuses_list:
-        return jsonify({"cavab": f"'{category_key}' kateqoriyası üçün bəhanə tapılmadı."})
+         return jsonify({"cavab": f"'{category_key}' kateqoriyası üçün bəhanə tapılmadı (və ümumi kateqoriya boşdur)."})
 
     excuse = random.choice(excuses_list)
 
     if ad:
+        if category_key == "general" and "general" in all_excuses and all_excuses["general"]:
+             excuse = random.choice(all_excuses["general"])
+
         personalized_excuses = [
             f"{ad}, {excuse.lower()}",
             f"Bağışla, {ad}, amma {excuse.lower()}",
@@ -128,4 +130,3 @@ def page_not_found(e):
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-

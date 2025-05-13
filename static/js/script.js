@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const loadingSpinner = document.getElementById('loading-spinner');
   const resultContainer = document.getElementById('result-container');
 
+  const RENDER_API_BASE_URL = "https://your-service-name.onrender.com";
+
   if (localStorage.getItem('userName')) {
     nameInput.value = localStorage.getItem('userName');
   }
@@ -26,7 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.removeItem('userName');
     }
 
-    let apiUrl = `/${category}`;
+    let apiUrl;
+    if (category === "yox") {
+         apiUrl = `${RENDER_API_BASE_URL}/yox`;
+    } else {
+         apiUrl = `${RENDER_API_BASE_URL}/${category}`;
+    }
 
     if (name) {
       apiUrl += `?ad=${encodeURIComponent(name)}`;
@@ -37,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => {
           if (!response.ok) {
             return response.json().then(err => {
-              throw new Error(err.xeta || 'API sorğusu uğursuz oldu');
+              throw new Error(`${response.status}: ${err.xeta || 'API sorğusu uğursuz oldu'}`);
             });
           }
           return response.json();
