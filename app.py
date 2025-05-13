@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, render_template
 import random
+import os
 from excuses import all_excuses
 
 app = Flask(__name__)
@@ -9,17 +10,16 @@ app.config['JSON_AS_ASCII'] = False
 def index():
     return render_template('index.html')
 
-
 def get_excuse_by_category(category_key):
     ad = request.args.get('ad')
 
     if category_key not in all_excuses:
-         return jsonify({"xeta": "Belə bir kateqoriya tapılmadı.", "status_kodu": 404}), 404
+        return jsonify({"xeta": "Belə bir kateqoriya tapılmadı.", "status_kodu": 404}), 404
 
     excuses_list = all_excuses[category_key]
 
     if not excuses_list:
-         return jsonify({"cavab": f"'{category_key}' kateqoriyası üçün bəhanə tapılmadı."})
+        return jsonify({"cavab": f"'{category_key}' kateqoriyası üçün bəhanə tapılmadı."})
 
     excuse = random.choice(excuses_list)
 
@@ -28,7 +28,7 @@ def get_excuse_by_category(category_key):
             f"{ad}, {excuse.lower()}",
             f"Bağışla, {ad}, amma {excuse.lower()}",
             f"Əzizim {ad}, {excuse.lower()}",
-             f"{ad} üçün cavab: {excuse.lower()}"
+            f"{ad} üçün cavab: {excuse.lower()}"
         ]
         final_response = random.choice(personalized_excuses)
         return jsonify({"cavab": final_response})
@@ -127,4 +127,5 @@ def page_not_found(e):
     return jsonify({"xeta": random.choice(messages), "status_kodu": 404}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
