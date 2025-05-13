@@ -1,9 +1,11 @@
+
+
 ![YOX Logo](./frontend/static/img/logo.png)
 
 # YOX-as-a-Service
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![API Status](https://img.shields.io/badge/API-Online-green)](https://yoxapi.fun)
+[![API Status](https://img.shields.io/badge/API-Online-green)](https://yoxapi.fun/random)
 
 > The ultimate Azerbaijani excuse generator API. Because sometimes "No" just isn't enough!
 
@@ -84,6 +86,8 @@ All endpoints return JSON in the following format:
 
 ## 📋 Available Endpoints
 
+The API endpoints are available at the base URL: `https://yoxapi.fun`.
+
 | Endpoint | Category | Description |
 |----------|----------|-------------|
 | `/sevgi` | Love | Excuses for romantic situations |
@@ -109,23 +113,16 @@ Each endpoint supports an optional `ad` query parameter to personalize the excus
 
 ![Web Interface](./frontend/static/img/intro.png)
 
-*Add your screenshot here*
-
 ## 🖥️ Self-Hosting Instructions
 
-Want to run your own instance of YOX-as-a-Service? Follow these steps:
+Want to run your own instance of YOX-as-a-Service? You can self-host the backend API and/or the frontend separately.
 
-### Prerequisites
-
-- Python 3.8+
-- Flask
-
-### Installation
+### Self-Hosting the Backend API
 
 1. Clone the repository:
    ```bash
    git clone https://github.com/sadatnazarli/yox-as-a-service.git
-   cd yox-as-a-service
+   cd yox-as-a-service/backend
    ```
 
 2. Create a virtual environment:
@@ -139,12 +136,34 @@ Want to run your own instance of YOX-as-a-Service? Follow these steps:
    pip install -r requirements.txt
    ```
 
-4. Run the application:
+4. Run the application using Gunicorn (recommended for production-like testing):
+   ```bash
+   gunicorn app:app -b 127.0.0.1:5000
+   ```
+   Or run the development server:
    ```bash
    python app.py
    ```
 
 The API will be available at `http://localhost:5000`.
+
+### Self-Hosting the Frontend
+
+You can serve the frontend directory using any static file server (e.g., Nginx, Apache, or Python's http.server).
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd yox-as-a-service/frontend
+   ```
+
+2. Serve the files (Example using Python's http.server):
+   ```bash
+   python -m http.server 8000
+   ```
+
+The frontend will be available at `http://localhost:8000`.
+
+Remember to update the API URL in `static/js/script.js` if not using Vercel proxying or a similar setup.
 
 ### Requirements.txt
 
