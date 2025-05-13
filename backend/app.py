@@ -1,4 +1,5 @@
-from flask import Flask, jsonify, request, render_template
+
+from flask import Flask, jsonify, request
 import random
 import os
 from excuses import all_excuses
@@ -8,10 +9,6 @@ app = Flask(__name__)
 CORS(app)
 
 app.config['JSON_AS_ASCII'] = False
-
-@app.route('/', methods=['GET'])
-def index():
-    return render_template('index.html')
 
 def get_excuse_by_category(category_key):
     ad = request.args.get('ad')

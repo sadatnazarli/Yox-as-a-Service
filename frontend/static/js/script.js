@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
   const yoxButton = document.getElementById('yox-button');
   const nameInput = document.getElementById('name-input');
@@ -6,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const loadingSpinner = document.getElementById('loading-spinner');
   const resultContainer = document.getElementById('result-container');
 
-  const RENDER_API_BASE_URL = "https://your-service-name.onrender.com";
+  const RENDER_API_BASE_URL = "https://yox-as-a-service.onrender.com";
 
   if (localStorage.getItem('userName')) {
     nameInput.value = localStorage.getItem('userName');
