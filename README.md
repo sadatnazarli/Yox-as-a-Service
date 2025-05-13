@@ -149,8 +149,11 @@ The API will be available at `http://localhost:5000`.
 ### Requirements.txt
 
 ```
-Flask
-gunicorn
+Flask==2.3.2
+gunicorn==20.1.0
+Flask-Cors==3.0.10
+python-dotenv==1.0.1
+
 ```
 
 ## 🗺️ Roadmap
