@@ -1,0 +1,68 @@
+{
+  "rewrites": [
+    {
+      "source": "/sevgi",
+      "destination": "https://yox-as-a-service.onrender.com/sevgi"
+    },
+    {
+      "source": "/dost",
+      "destination": "https://yox-as-a-service.onrender.com/dost"
+    },
+    {
+      "source": "/valideyn",
+      "destination": "https://yox-as-a-service.onrender.com/valideyn"
+    },
+    {
+      "source": "/is",
+      "destination": "https://yox-as-a-service.onrender.com/is"
+    },
+    {
+      "source": "/muellim",
+      "destination": "https://yox-as-a-service.onrender.com/muellim"
+    },
+    {
+      "source": "/qohum",
+      "destination": "https://yox-as-a-service.onrender.com/qohum"
+    },
+    {
+      "source": "/mekteb",
+      "destination": "https://yox-as-a-service.onrender.com/mekteb"
+    },
+    {
+      "source": "/telefon",
+      "destination": "https://yox-as-a-service.onrender.com/telefon"
+    },
+    {
+      "source": "/tedbir",
+      "destination": "https://yox-as-a-service.onrender.com/tedbir"
+    },
+    {
+      "source": "/gorusme",
+      "destination": "https://yox-as-a-service.onrender.com/gorusme"
+    },
+    {
+      "source": "/idman",
+      "destination": "https://yox-as-a-service.onrender.com/idman"
+    },
+    {
+      "source": "/yemek",
+      "destination": "https://yox-as-a-service.onrender.com/yemek"
+    },
+    {
+      "source": "/pul",
+      "destination": "https://yox-as-a-service.onrender.com/pul"
+    },
+    {
+      "source": "/gezinti",
+      "destination": "https://yox-as-a-service.onrender.com/gezinti"
+    },
+    {
+      "source": "/umumi",
+      "destination": "https://yox-as-a-service.onrender.com/umumi"
+    },
+    {
+      "source": "/random",
+      "destination": "https://yox-as-a-service.onrender.com/random"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-![YOX Logo](./static/img/logo.png)
+![YOX Logo](./frontend/static/img/logo.png)
 
 # YOX-as-a-Service
 
@@ -107,7 +107,7 @@ Each endpoint supports an optional `ad` query parameter to personalize the excus
 
 ## 📸 Screenshots
 
-![Web Interface](./assets/screenshot1.png)
+![Web Interface](./frontend/static/img/intro.png)
 
 *Add your screenshot here*
 
