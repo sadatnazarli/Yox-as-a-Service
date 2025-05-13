@@ -1,5 +1,3 @@
-
-
 ![YOX Logo](./frontend/static/img/logo.png)
 
 # YOX-as-a-Service
@@ -112,68 +110,6 @@ Each endpoint supports an optional `ad` query parameter to personalize the excus
 ## 📸 Screenshots
 
 ![Web Interface](./frontend/static/img/intro.png)
-
-## 🖥️ Self-Hosting Instructions
-
-Want to run your own instance of YOX-as-a-Service? You can self-host the backend API and/or the frontend separately.
-
-### Self-Hosting the Backend API
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/sadatnazarli/yox-as-a-service.git
-   cd yox-as-a-service/backend
-   ```
-
-2. Create a virtual environment:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. Run the application using Gunicorn (recommended for production-like testing):
-   ```bash
-   gunicorn app:app -b 127.0.0.1:5000
-   ```
-   Or run the development server:
-   ```bash
-   python app.py
-   ```
-
-The API will be available at `http://localhost:5000`.
-
-### Self-Hosting the Frontend
-
-You can serve the frontend directory using any static file server (e.g., Nginx, Apache, or Python's http.server).
-
-1. Navigate to the frontend directory:
-   ```bash
-   cd yox-as-a-service/frontend
-   ```
-
-2. Serve the files (Example using Python's http.server):
-   ```bash
-   python -m http.server 8000
-   ```
-
-The frontend will be available at `http://localhost:8000`.
-
-Remember to update the API URL in `static/js/script.js` if not using Vercel proxying or a similar setup.
-
-### Requirements.txt
-
-```
-Flask==2.3.2
-gunicorn==20.1.0
-Flask-Cors==3.0.10
-python-dotenv==1.0.1
-
-```
 
 ## 🗺️ Roadmap
 
