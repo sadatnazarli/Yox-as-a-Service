@@ -1,0 +1,501 @@
+:root {
+  --blue: #007bff;
+  --red: #dc3545;
+  --green: #28a745;
+  --white: #ffffff;
+  --dark: #212529;
+  --light-gray: #f8f9fa;
+  --gray: #ced4da;
+  --shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --gradient: linear-gradient(135deg, var(--blue) 0%, #0056b3 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-gray);
+  color: var(--dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.app-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  /* Changed from center to flex-start */
+  padding: 0;
+  /* Removed padding to eliminate space around header and footer */
+}
+
+/* Flag strips top and bottom */
+.flag-strip-top,
+.flag-strip-bottom {
+  height: 8px;
+  width: 100%;
+  display: flex;
+}
+
+.flag-strip-top:before,
+.flag-strip-bottom:before {
+  content: "";
+  flex: 1;
+  background-color: var(--blue);
+}
+
+.flag-strip-top:after,
+.flag-strip-bottom:after {
+  content: "";
+  flex: 1;
+  background-color: var(--red);
+}
+
+.flag-strip-top:before,
+.flag-strip-top:after,
+.flag-strip-bottom:before,
+.flag-strip-bottom:after {
+  position: relative;
+}
+
+.flag-strip-top:before,
+.flag-strip-bottom:before {
+  margin-right: 2px;
+}
+
+.flag-strip-top:after,
+.flag-strip-bottom:after {
+  margin-left: 2px;
+}
+
+/* Using background-image for gradients on flag strips */
+.flag-strip-top:before {
+  background-image: linear-gradient(to right, var(--blue), var(--blue) 33%, var(--red) 33%, var(--red) 66%, var(--green) 66%, var(--green) 100%);
+}
+
+.flag-strip-top:after {
+  background-image: linear-gradient(to right, var(--green), var(--green) 33%, var(--blue) 33%, var(--blue) 66%, var(--red) 66%, var(--red) 100%);
+}
+
+.flag-strip-bottom:before {
+  background-image: linear-gradient(to right, var(--green), var(--green) 33%, var(--red) 33%, var(--red) 66%, var(--blue) 66%, var(--blue) 100%);
+}
+
+.flag-strip-bottom:after {
+  background-image: linear-gradient(to right, var(--red), var(--red) 33%, var(--green) 33%, var(--green) 66%, var(--blue) 66%, var(--blue) 100%);
+}
+
+/* Header Styles */
+header {
+  padding: 15px 20px;
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  width: 100%;
+  margin: 0;
+  /* Added margin 0 to eliminate any space */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo-icon {
+  background: var(--gradient);
+  color: var(--white);
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  border-radius: 10px;
+  margin-right: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo-icon:before {
+  content: "";
+  position: absolute;
+  width: 150%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  top: -50%;
+  left: -25%;
+}
+
+.logo-text h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin: 0;
+}
+
+.logo-text p {
+  color: #555;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Main Content */
+main {
+  flex: 1;
+  padding: 30px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.card {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  max-width: 700px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--gray);
+}
+
+.card-content {
+  padding: 30px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.intro h2 {
+  color: var(--dark);
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.intro p {
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Form Elements */
+.form-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin-bottom: 30px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: var(--dark);
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+input,
+select {
+  padding: 12px 15px;
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper:after {
+  content: "▼";
+  font-size: 0.8rem;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  pointer-events: none;
+}
+
+select {
+  appearance: none;
+  width: 100%;
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+.yox-button {
+  grid-column: 1 / -1;
+  background: var(--gradient);
+  color: var(--white);
+  border: none;
+  padding: 14px 25px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.35);
+}
+
+.yox-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 123, 255, 0.45);
+}
+
+.yox-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(0, 123, 255, 0.35);
+}
+
+.button-text {
+  margin-right: 10px;
+}
+
+.button-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.yox-button:hover .button-icon {
+  transform: translateX(5px);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.spinner {
+  width: 35px;
+  height: 35px;
+  border: 4px solid rgba(0, 180, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--blue);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner span {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+/* Result Container */
+.result-container {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  border-radius: 8px;
+  padding: 35px 25px 25px 25px;
+  margin-top: 25px;
+  position: relative;
+  border: 1px solid var(--gray);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: none;
+}
+
+.result-badge {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--red);
+  color: var(--white);
+  padding: 5px 15px;
+  font-size: 0.8rem;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(255, 0, 0, 0.25);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.result-text {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--dark);
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* Animation for result */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Footer */
+footer {
+  background-color: var(--white);
+  text-align: center;
+  padding: 15px 20px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  margin: 0;
+  /* Added margin 0 to eliminate any space */
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content p {
+  margin: 4px 0;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.footer-content a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-container {
+    grid-template-columns: 1fr;
+    grid-gap: 15px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .logo-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+
+  .logo-text h1 {
+    font-size: 1.5rem;
+  }
+
+  .intro h2 {
+    font-size: 1.4rem;
+  }
+
+  .result-container {
+    padding: 30px 20px 20px 20px;
+  }
+
+  .result-badge {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .app-container {
+    padding: 0;
+    /* Removed padding for smaller screens */
+  }
+
+  .logo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .intro h2 {
+    font-size: 1.3rem;
+  }
+
+  .intro p {
+    font-size: 0.9rem;
+  }
+
+  .card-content {
+    padding: 15px;
+  }
+
+  input,
+  select,
+  .yox-button {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .result-container {
+    padding: 30px 15px 15px 15px;
+  }
+
+  .result-badge {
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+
+  .result-text {
+    font-size: 1rem;
+  }
+
+  .footer-content p {
+    font-size: 0.8rem;
+  }
+}

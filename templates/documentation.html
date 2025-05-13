@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="YOX-as-a-Service API Documentation" data-az="YOX-as-a-Service API Sənədləşdirməsi">YOX-as-a-Service
+    API Sənədləşdirməsi</title>
+  <meta name="description" data-en="Documentation for YOX-as-a-Service, an Azerbaijani cultural excuse API."
+    data-az="Azərbaycansayağı mədəni bəhanələr API-si YOX-as-a-Service üçün sənədləşdirmə.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='/css/documentation.css') }}">
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <span class="logo-icon">YOX</span>
+        <span class="brand-text" data-en="API Docs" data-az="API Sənədləri">API Sənədləri</span>
+      </div>
+      <ul class="navbar-nav">
+        <li><a href="#introduction" data-en="Introduction" data-az="Giriş">Giriş</a></li>
+        <li><a href="#base-url" data-en="Base URL" data-az="Əsas URL">Əsas URL</a></li>
+        <li><a href="#endpoints" data-en="Endpoints" data-az="Endpointlər">Endpointlər</a></li>
+        <li><a href="#parameters" data-en="Parameters" data-az="Parametrlər">Parametrlər</a></li>
+        <li><a href="#response-format" data-en="Response Format" data-az="Cavab Formatı">Cavab Formatı</a></li>
+        <li><a href="#usage-examples" data-en="Usage Examples" data-az="İstifadə Nümunələri">İstifadə Nümunələri</a>
+        </li>
+      </ul>
+      <div class="navbar-actions">
+        <div class="lang-switcher">
+          <button data-lang="az">AZ</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="content">
+    <div class="container">
+      <section id="introduction" class="doc-section">
+        <h2 data-en="Introduction" data-az="Giriş">Giriş <a href="#introduction" class="section-link">#</a></h2>
+        <p data-en="Welcome to the YOX-as-a-Service API documentation. This API provides cultural Azerbaijani 'YOX' (No) excuses in various categories. You can integrate this API into your applications to get unique and humorous responses."
+          data-az="YOX-as-a-Service API sənədləşdirməsinə xoş gəlmisiniz. Bu API müxtəlif kateqoriyalarda Azərbaycansayağı mədəni 'YOX' bəhanələri təqdim edir. Tətbiqlərinizə inteqrasiya edərək unikal və yumoristik cavablar əldə edə bilərsiniz.">
+          YOX-as-a-Service API sənədləşdirməsinə xoş gəlmisiniz. Bu API müxtəlif kateqoriyalarda Azərbaycansayağı mədəni
+          "YOX" bəhanələri təqdim edir. Tətbiqlərinizə inteqrasiya edərək unikal və yumoristik cavablar əldə edə
+          bilərsiniz.
+        </p>
+      </section>
+
+      <section id="base-url" class="doc-section">
+        <h2 data-en="Base URL" data-az="Əsas URL">Əsas URL <a href="#base-url" class="section-link">#</a></h2>
+        <p data-en="The base URL for all API requests is:" data-az="Bütün API sorğuları üçün əsas URL budur:">
+          Bütün API sorğuları üçün əsas URL budur:
+        </p>
+        <div class="code-block-container">
+          <pre><code class="language-http">{{ request.base_url if request else 'YOUR_API_BASE_URL' }}</code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+        <p data-en="(Replace `YOUR_API_BASE_URL` with the actual URL where your Flask application is running, e.g., `http://127.0.0.1:5000`)"
+          data-az="(Flask tətbiqinizin işlədiyi real URL ilə `YOUR_API_BASE_URL`-i əvəz edin, məsələn, `http://127.0.0.1:5000`)">
+          (Flask tətbiqinizin işlədiyi real URL ilə `YOUR_API_BASE_URL`-i əvəz edin, məsələn, `http://127.0.0.1:5000`)
+        </p>
+      </section>
+
+      <section id="endpoints" class="doc-section">
+        <h2 data-en="Endpoints" data-az="Endpointlər">Endpointlər <a href="#endpoints" class="section-link">#</a></h2>
+        <p data-en="All endpoints support the <code>GET</code> method. Replace <code>{category}</code> in the examples below with one of the available categories."
+          data-az="Bütün endpointlər <code>GET</code> metodunu dəstəkləyir. Aşağıdakı nümunələrdə <code>{category}</code> hissəsini mövcud kateqoriyalardan biri ilə əvəz edin.">
+          Bütün endpointlər `GET` metodunu dəstəkləyir. Aşağıdakı nümunələrdə `{category}` hissəsini mövcud
+          kateqoriyalardan biri ilə əvəz edin.
+        </p>
+
+        <h3 data-en="Available Categories" data-az="Mövcud Kateqoriyalar">Mövcud Kateqoriyalar <a href="#endpoints"
+            class="section-link">#</a></h3>
+        <ul class="category-list">
+          <li><code data-en="/yox" data-az="/yox">/yox</code>: <span data-en="General excuses"
+              data-az="Ümumi bəhanələr">Ümumi bəhanələr</span></li>
+          <li><code data-en="/sevgi" data-az="/sevgi">/sevgi</code>: <span data-en="Love-related excuses"
+              data-az="Sevgi mövzulu bəhanələr">Sevgi mövzulu bəhanələr</span></li>
+          <li><code data-en="/dost" data-az="/dost">/dost</code>: <span data-en="Friendship-related excuses"
+              data-az="Dostluq mövzulu bəhanələr">Dostluq mövzulu bəhanələr</span></li>
+          <li><code data-en="/muellim" data-az="/muellim">/muellim</code>: <span data-en="Teacher-related excuses"
+              data-az="Müəllimlə bağlı bəhanələr">Müəllimlə bağlı bəhanələr</span></li>
+          <li><code data-en="/valideyn" data-az="/valideyn">/valideyn</code>: <span data-en="Parent-related excuses"
+              data-az="Valideynlə bağlı bəhanələr">Valideynlə bağlı bəhanələr</span></li>
+          <li><code data-en="/is" data-az="/is">/is</code>: <span data-en="Work-related excuses"
+              data-az="İşlə bağlı bəhanələr">İşlə bağlı bəhanələr</span></li>
+          <li><code data-en="/toy_yox" data-az="/toy_yox">/toy_yox</code>: <span data-en="Wedding excuses"
+              data-az="Toy bəhanələri">Toy bəhanələri</span></li>
+          <li><code data-en="/qonaqliq_yox" data-az="/qonaqliq_yox">/qonaqliq_yox</code>: <span
+              data-en="Guest/Party excuses" data-az="Qonaqlıq bəhanələri">Qonaqlıq bəhanələri</span></li>
+          <li><code data-en="/yol_yox" data-az="/yol_yox">/yol_yox</code>: <span data-en="Travel/Road excuses"
+              data-az="Yol bəhanələri">Yol bəhanələri</span></li>
+          <li><code data-en="/sosial_media_yox" data-az="/sosial_media_yox">/sosial_media_yox</code>: <span
+              data-en="Social Media excuses" data-az="Sosial Media bəhanələri">Sosial Media bəhanələri</span></li>
+          <li><code data-en="/oyun_yox" data-az="/oyun_yox">/oyun_yox</code>: <span data-en="Game excuses"
+              data-az="Oyun bəhanələri">Oyun bəhanələri</span></li>
+          <li><code data-en="/texnologiya_yox" data-az="/texnologiya_yox">/texnologiya_yox</code>: <span
+              data-en="Technology excuses" data-az="Texnologiya bəhanələri">Texnologiya bəhanələri</span></li>
+          <li><code data-en="/pul_yox" data-az="/pul_yox">/pul_yox</code>: <span data-en="Money excuses"
+              data-az="Pul bəhanələri">Pul bəhanələri</span></li>
+          <li><code data-en="/saglamliq_yox" data-az="/saglamliq_yox">/saglamliq_yox</code>: <span
+              data-en="Health excuses" data-az="Sağlamlıq bəhanələri">Sağlamlıq bəhanələri</span></li>
+          <li><code data-en="/qonsu_yox" data-az="/qonsu_yox">/qonsu_yox</code>: <span data-en="Neighbor excuses"
+              data-az="Qonşu bəhanələri">Qonşu bəhanələri</span></li>
+          <li><code data-en="/burokratiya_yox" data-az="/burokratiya_yox">/burokratiya_yox</code>: <span
+              data-en="Bureaucracy excuses" data-az="Bürokratiya bəhanələri">Bürokratiya bəhanələri</span></li>
+          <li><code data-en="/ev_isleri_yox" data-az="/ev_isleri_yox">/ev_isleri_yox</code>: <span
+              data-en="Housework excuses" data-az="Ev işləri bəhanələri">Ev işləri bəhanələri</span></li>
+          <li><code data-en="/felsefi_yox" data-az="/felsefi_yox">/felsefi_yox</code>: <span
+              data-en="Philosophical excuses" data-az="Fəlsəfi bəhanələr">Fəlsəfi bəhanələr</span></li>
+          <li><code data-en="/hava_yox" data-az="/hava_yox">/hava_yox</code>: <span data-en="Weather excuses"
+              data-az="Hava bəhanələri">Hava bəhanələri</span></li>
+          <li><code data-en="/paltar_yox" data-az="/paltar_yox">/paltar_yox</code>: <span data-en="Clothing excuses"
+              data-az="Paltar bəhanələri">Paltar bəhanələri</span></li>
+        </ul>
+
+        <h3 data-en="Example Request" data-az="Nümunə Sorğu">Nümunə Sorğu <a href="#endpoints"
+            class="section-link">#</a></h3>
+        <p data-en="To get a general excuse:" data-az="Ümumi bəhanə əldə etmək üçün:">Ümumi bəhanə əldə etmək üçün:</p>
+        <div class="code-block-container">
+          <pre><code class="language-http">GET /yox</code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+        <p data-en="To get a love-related excuse:" data-az="Sevgi mövzulu bəhanə əldə etmək üçün:">Sevgi mövzulu bəhanə
+          əldə etmək üçün:</p>
+        <div class="code-block-container">
+          <pre><code class="language-http">GET /sevgi</code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+      </section>
+
+      <section id="parameters" class="doc-section">
+        <h2 data-en="Parameters" data-az="Parametrlər">Parametrlər <a href="#parameters" class="section-link">#</a></h2>
+        <p data-en="All endpoints accept an optional <code>ad</code> parameter for personalization."
+          data-az="Bütün endpointlər fərdiləşdirmə üçün könüllü <code>ad</code> parametrini qəbul edir.">
+          Bütün endpointlər fərdiləşdirmə üçün könüllü `ad` parametrini qəbul edir.
+        </p>
+        <ul>
+          <li data-en="<code>ad</code>: (string, optional) The name of the user to personalize the excuse."
+            data-az="<code>ad</code>: (string, könüllü) Bəhanənin fərdiləşdirilməsi üçün istifadəçinin adı.">
+            <code>ad</code>: (string, könüllü) Bəhanənin fərdiləşdirilməsi üçün istifadəçinin adı.
+          </li>
+        </ul>
+        <h3 data-en="Example Request with Parameter" data-az="Parametrlə Nümunə Sorğu">Parametrlə Nümunə Sorğu <a
+            href="#parameters" class="section-link">#</a></h3>
+        <p data-en="To get a general excuse personalized for 'Əhməd':"
+          data-az="'Əhməd' üçün fərdiləşdirilmiş ümumi bəhanə əldə etmək üçün:">"Əhməd" üçün fərdiləşdirilmiş ümumi
+          bəhanə əldə etmək üçün:</p>
+        <div class="code-block-container">
+          <pre><code class="language-http">GET /yox?ad=%C6%8Fhm%C9%99d</code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+        <p data-en="(Note: The name should be URL-encoded)" data-az="(Qeyd: Ad URL-enkod edilməlidir)">(Qeyd: Ad
+          URL-enkod edilməlidir)</p>
+      </section>
+
+
+      <section id="response-format" class="doc-section">
+        <h2 data-en="Response Format" data-az="Cavab Formatı">Cavab Formatı <a href="#response-format"
+            class="section-link">#</a></h2>
+        <p data-en="API responses are returned in JSON format." data-az="API cavabları JSON formatında qaytarılır.">
+          API cavabları JSON formatında qaytarılır.
+        </p>
+
+        <h3 data-en="Success Response (200 OK)" data-az="Uğurlu Cavab (200 OK)">Uğurlu Cavab (200 OK) <a
+            href="#response-format" class="section-link">#</a></h3>
+        <div class="code-block-container">
+          <pre><code class="language-json">
+{
+  "cavab": "Sizin üçün seçilmiş mədəni bəhanə mətni."
+}
+                    </code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+
+        <h3 data-en="Error Response (e.g., 404 Not Found)" data-az="Xəta Cavabı (məsələn, 404 Not Found)">Xəta Cavabı
+          (məsələn, 404 Not Found) <a href="#response-format" class="section-link">#</a></h3>
+        <div class="code-block-container">
+          <pre><code class="language-json">
+{
+  "xeta": "Xəta mesajı (məsələn, Bura gəlmək üçün iznin yoxdu, qayıt.)",
+  "status_kodu": 404
+}
+                    </code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+        <p data-en="Error messages are returned by your Flask application's error handler."
+          data-az="Xəta mesajları Flask tətbiqinizin xəta idarəedicisi tərəfindən qaytarılır.">
+          Xəta mesajları Flask tətbiqinizin xəta idarəedicisi tərəfindən qaytarılır.
+        </p>
+      </section>
+
+      <section id="usage-examples" class="doc-section">
+        <h2 data-en="Usage Examples" data-az="İstifadə Nümunələri">İstifadə Nümunələri <a href="#usage-examples"
+            class="section-link">#</a></h2>
+
+        <h3 data-en="Python (using requests library)" data-az="Python (requests kitabxanası ilə)">Python (requests
+          kitabxanası ilə) <a href="#usage-examples" class="section-link">#</a></h3>
+        <div class="code-block-container">
+          <pre><code class="language-python">
+import requests
+import json
+
+base_url = "{{ request.base_url if request else 'http://127.0.0.1:5000' }}" # Replace with your API base URL
+
+def get_yox_behane(category="yox", ad=None):
+    """
+    Fetches an excuse from the YOX API.
+
+    Args:
+        category (str): The excuse category (default: 'yox').
+        ad (str, optional): The user's name. Defaults to None.
+
+    Returns:
+        str: The excuse text or an error message.
+    """
+    url = f"{base_url}/{category}"
+    params = {}
+    if ad:
+        params['ad'] = ad
+
+    try:
+        response = requests.get(url, params=params)
+        response.raise_for_status() # Raise an exception for HTTP errors
+
+        data = response.json()
+        return data.get("cavab", "Invalid response format.")
+
+    except requests.exceptions.RequestException as e:
+        return f"Request error: {e}"
+    except json.JSONDecodeError:
+        return "Response is not in JSON format."
+    except Exception as e:
+        return f"Unexpected error: {e}"
+
+# Example usage
+behame_umumi = get_yox_behane()
+print(f"General excuse: {behame_umumi}")
+
+behame_sevgi_adli = get_yox_behane(category="sevgi", ad="Əli")
+print(f"Love excuse for Ali: {behame_sevgi_adli}")
+
+behame_is = get_yox_behane(category="is")
+print(f"Work excuse: {behame_is}")
+                    </code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+
+        <h3 data-en="JavaScript (using Fetch API)" data-az="JavaScript (Fetch API ilə)">JavaScript (Fetch API ilə) <a
+            href="#usage-examples" class="section-link">#</a></h3>
+        <div class="code-block-container">
+          <pre><code class="language-javascript">
+async function getYoxBehane(category = 'yox', ad = null) {
+    const baseUrl = "{{ request.base_url if request else 'http://127.0.0.1:5000' }}"; // Replace with your API base URL
+    let url = `${baseUrl}/${category}`;
+
+    if (ad) {
+        const params = new URLSearchParams({ ad: ad });
+        url += `?${params.toString()}`;
+    }
+
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.xeta || `HTTP error! Status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        return data.cavab || 'Invalid response format.';
+
+    } catch (error) {
+        console.error('Fetch error:', error);
+        return `Error occurred: ${error.message}`;
+    }
+}
+
+// Example usage
+getYoxBehane()
+    .then(behame => console.log("General excuse:", behame))
+    .catch(error => console.error(error));
+
+getYoxBehane('dost', 'Vüqar')
+    .then(behame => console.log("Friendship excuse for Vugar:", behame))
+    .catch(error => console.error(error));
+                    </code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+
+        <h3 data-en="Curl (in Terminal)" data-az="Curl (Terminalda)">Curl (Terminalda) <a href="#usage-examples"
+            class="section-link">#</a></h3>
+        <div class="code-block-container">
+          <pre><code class="language-bash">
+# General excuse
+curl {{ request.base_url if request else 'http://127.0.0.1:5000' }}/yox
+
+# General excuse with name
+curl "{{ request.base_url if request else 'http://127.0.0.1:5000' }}/yox?ad=%C6%8Fhm%C9%99d"
+
+# Love excuse
+curl {{ request.base_url if request else 'http://127.0.0.1:5000' }}/sevgi
+
+# Work excuse with name
+curl "{{ request.base_url if request else 'http://127.0.0.1:5000' }}/is?ad=Kamran"
+                    </code></pre>
+          <button class="copy-button" aria-label="Copy code block">Copy</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p data-en="© 2025 YOX-as-a-Service. All rights reserved."
+        data-az="© 2025 YOX-as-a-Service. Bütün hüquqlar qorunur.">© 2025 YOX-as-a-Service. Bütün hüquqlar qorunur.</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='/js/documentation.js') }}"></script>
+</body>
+
+</html>
