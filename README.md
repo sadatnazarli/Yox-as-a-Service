@@ -111,15 +111,6 @@ Each endpoint supports an optional `ad` query parameter to personalize the excus
 
 ![Web Interface](./frontend/static/img/intro.png)
 
-## 🗺️ Roadmap
-
-- [ ] Add admin panel for usage statistics
-- [ ] Expand excuse database with more categories
-- [ ] Implement regional dialects and slang variations
-- [ ] Create mobile app integration examples
-- [ ] Add audio pronunciations of excuses
-- [ ] Develop multi-language support (starting with Russian and English)
-- [ ] Create a contributor system for community-submitted excuses
 
 ## 📜 License
 
