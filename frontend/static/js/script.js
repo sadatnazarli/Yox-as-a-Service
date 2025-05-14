@@ -29,11 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let apiUrl;
     const baseUrl = "https://yox-as-a-service.onrender.com";
 
-    if (category === "yox") {
-      apiUrl = `${baseUrl}/yox`;
-    } else {
-      apiUrl = `${baseUrl}/${category}`;
-    }
+    apiUrl = `${baseUrl}/${category}`;
 
     if (name) {
       apiUrl += `?ad=${encodeURIComponent(name)}`;

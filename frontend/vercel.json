@@ -63,6 +63,174 @@
     {
       "source": "/random",
       "destination": "https://yox-as-a-service.onrender.com/random"
+    },
+    {
+      "source": "/general",
+      "destination": "https://yox-as-a-service.onrender.com/general"
+    },
+    {
+      "source": "/toy_yox",
+      "destination": "https://yox-as-a-service.onrender.com/toy_yox"
+    },
+    {
+      "source": "/qonaqliq_yox",
+      "destination": "https://yox-as-a-service.onrender.com/qonaqliq_yox"
+    },
+    {
+      "source": "/yol_yox",
+      "destination": "https://yox-as-a-service.onrender.com/yol_yox"
+    },
+    {
+      "source": "/sosial_media_yox",
+      "destination": "https://yox-as-a-service.onrender.com/sosial_media_yox"
+    },
+    {
+      "source": "/oyun_yox",
+      "destination": "https://yox-as-a-service.onrender.com/oyun_yox"
+    },
+    {
+      "source": "/texnologiya_yox",
+      "destination": "https://yox-as-a-service.onrender.com/texnologiya_yox"
+    },
+    {
+      "source": "/pul_yox",
+      "destination": "https://yox-as-a-service.onrender.com/pul_yox"
+    },
+    {
+      "source": "/saglamliq_yox",
+      "destination": "https://yox-as-a-service.onrender.com/saglamliq_yox"
+    },
+    {
+      "source": "/qonsu_yox",
+      "destination": "https://yox-as-a-service.onrender.com/qonsu_yox"
+    },
+    {
+      "source": "/burokratiya_yox",
+      "destination": "https://yox-as-a-service.onrender.com/burokratiya_yox"
+    },
+    {
+      "source": "/ev_isleri_yox",
+      "destination": "https://yox-as-a-service.onrender.com/ev_isleri_yox"
+    },
+    {
+      "source": "/felsefi_yox",
+      "destination": "https://yox-as-a-service.onrender.com/felsefi_yox"
+    },
+    {
+      "source": "/hava_yox",
+      "destination": "https://yox-as-a-service.onrender.com/hava_yox"
+    },
+    {
+      "source": "/paltar_yox",
+      "destination": "https://yox-as-a-service.onrender.com/paltar_yox"
+    },
+    {
+      "source": "/general_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/general_yeni"
+    },
+    {
+      "source": "/sevgi_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/sevgi_yeni"
+    },
+    {
+      "source": "/dost_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/dost_yeni"
+    },
+    {
+      "source": "/muellim_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/muellim_yeni"
+    },
+    {
+      "source": "/valideyn_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/valideyn_yeni"
+    },
+    {
+      "source": "/is_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/is_yeni"
+    },
+    {
+      "source": "/toy_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/toy_yeni"
+    },
+    {
+      "source": "/qonaqliq_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/qonaqliq_yeni"
+    },
+    {
+      "source": "/yol_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/yol_yeni"
+    },
+    {
+      "source": "/sosial_media_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/sosial_media_yeni"
+    },
+    {
+      "source": "/oyun_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/oyun_yeni"
+    },
+    {
+      "source": "/texnologiya_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/texnologiya_yeni"
+    },
+    {
+      "source": "/pul_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/pul_yeni"
+    },
+    {
+      "source": "/saglamliq_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/saglamliq_yeni"
+    },
+    {
+      "source": "/qonsu_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/qonsu_yeni"
+    },
+    {
+      "source": "/burokratiya_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/burokratiya_yeni"
+    },
+    {
+      "source": "/ev_isleri_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/ev_isleri_yeni"
+    },
+    {
+      "source": "/felsefi_absurd_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/felsefi_absurd_yeni"
+    },
+    {
+      "source": "/hava_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/hava_yeni"
+    },
+    {
+      "source": "/paltar_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/paltar_yeni"
+    },
+    {
+      "source": "/astroloji_mistik_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/astroloji_mistik_yeni"
+    },
+    {
+      "source": "/suni_intellekt_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/suni_intellekt_yeni"
+    },
+    {
+      "source": "/post_sovet_mentalitet_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/post_sovet_mentalitet_yeni"
+    },
+    {
+      "source": "/yaradiciliq_ilham_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/yaradiciliq_ilham_yeni"
+    },
+    {
+      "source": "/sosial_tesevvur_yeni",
+      "destination": "https://yox-as-a-service.onrender.com/sosial_tesevvur_yeni"
+    },
+    {
+      "source": "/yox",
+      "destination": "https://yox-as-a-service.onrender.com/yox"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://yox-as-a-service.onrender.com/api/:path*"
     }
   ]
 }

@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request
 import random
 import os
@@ -34,8 +33,9 @@ def get_excuse_by_category(category_key):
     else:
         return jsonify({"cavab": excuse})
 
-@app.route('/yox', methods=['GET'])
-def get_yox():
+# Köhnə kateqoriyalar
+@app.route('/general', methods=['GET'])
+def get_general():
     return get_excuse_by_category("general")
 
 @app.route('/sevgi', methods=['GET'])
@@ -113,6 +113,113 @@ def get_hava_yox():
 @app.route('/paltar_yox', methods=['GET'])
 def get_paltar_yox():
     return get_excuse_by_category("paltar_yox")
+
+# Yeni kateqoriyalar
+@app.route('/general_yeni', methods=['GET'])
+def get_general_yeni():
+    return get_excuse_by_category("general_yeni")
+
+@app.route('/sevgi_yeni', methods=['GET'])
+def get_sevgi_yeni():
+    return get_excuse_by_category("sevgi_yeni")
+
+@app.route('/dost_yeni', methods=['GET'])
+def get_dost_yeni():
+    return get_excuse_by_category("dost_yeni")
+
+@app.route('/muellim_yeni', methods=['GET'])
+def get_muellim_yeni():
+    return get_excuse_by_category("muellim_yeni")
+
+@app.route('/valideyn_yeni', methods=['GET'])
+def get_valideyn_yeni():
+    return get_excuse_by_category("valideyn_yeni")
+
+@app.route('/is_yeni', methods=['GET'])
+def get_is_yeni():
+    return get_excuse_by_category("is_yeni")
+
+@app.route('/toy_yeni', methods=['GET'])
+def get_toy_yeni():
+    return get_excuse_by_category("toy_yeni")
+
+@app.route('/qonaqliq_yeni', methods=['GET'])
+def get_qonaqliq_yeni():
+    return get_excuse_by_category("qonaqliq_yeni")
+
+@app.route('/yol_yeni', methods=['GET'])
+def get_yol_yeni():
+    return get_excuse_by_category("yol_yeni")
+
+@app.route('/sosial_media_yeni', methods=['GET'])
+def get_sosial_media_yeni():
+    return get_excuse_by_category("sosial_media_yeni")
+
+@app.route('/oyun_yeni', methods=['GET'])
+def get_oyun_yeni():
+    return get_excuse_by_category("oyun_yeni")
+
+@app.route('/texnologiya_yeni', methods=['GET'])
+def get_texnologiya_yeni():
+    return get_excuse_by_category("texnologiya_yeni")
+
+@app.route('/pul_yeni', methods=['GET'])
+def get_pul_yeni():
+    return get_excuse_by_category("pul_yeni")
+
+@app.route('/saglamliq_yeni', methods=['GET'])
+def get_saglamliq_yeni():
+    return get_excuse_by_category("saglamliq_yeni")
+
+@app.route('/qonsu_yeni', methods=['GET'])
+def get_qonsu_yeni():
+    return get_excuse_by_category("qonsu_yeni")
+
+@app.route('/burokratiya_yeni', methods=['GET'])
+def get_burokratiya_yeni():
+    return get_excuse_by_category("burokratiya_yeni")
+
+@app.route('/ev_isleri_yeni', methods=['GET'])
+def get_ev_isleri_yeni():
+    return get_excuse_by_category("ev_isleri_yeni")
+
+@app.route('/felsefi_absurd_yeni', methods=['GET'])
+def get_felsefi_absurd_yeni():
+    return get_excuse_by_category("felsefi_absurd_yeni")
+
+@app.route('/hava_yeni', methods=['GET'])
+def get_hava_yeni():
+    return get_excuse_by_category("hava_yeni")
+
+@app.route('/paltar_yeni', methods=['GET'])
+def get_paltar_yeni():
+    return get_excuse_by_category("paltar_yeni")
+
+# Xüsusi yeni kateqoriyalar
+@app.route('/astroloji_mistik_yeni', methods=['GET'])
+def get_astroloji_mistik_yeni():
+    return get_excuse_by_category("astroloji_mistik_yeni")
+
+@app.route('/suni_intellekt_yeni', methods=['GET'])
+def get_suni_intellekt_yeni():
+    return get_excuse_by_category("suni_intellekt_yeni")
+
+@app.route('/post_sovet_mentalitet_yeni', methods=['GET'])
+def get_post_sovet_mentalitet_yeni():
+    return get_excuse_by_category("post_sovet_mentalitet_yeni")
+
+@app.route('/yaradiciliq_ilham_yeni', methods=['GET'])
+def get_yaradiciliq_ilham_yeni():
+    return get_excuse_by_category("yaradiciliq_ilham_yeni")
+
+@app.route('/sosial_tesevvur_yeni', methods=['GET'])
+def get_sosial_tesevvur_yeni():
+    return get_excuse_by_category("sosial_tesevvur_yeni")
+
+# Geriyə uyğunluq üçün
+@app.route('/yox', methods=['GET'])
+def get_yox():
+    return get_excuse_by_category("general")
 
 @app.errorhandler(404)
 def page_not_found(e):
