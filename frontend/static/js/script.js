@@ -27,10 +27,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let apiUrl;
+    const baseUrl = "https://yox-as-a-service.onrender.com";
+
     if (category === "yox") {
-         apiUrl = `/yox`;
+      apiUrl = `${baseUrl}/yox`;
     } else {
-         apiUrl = `/${category}`;
+      apiUrl = `${baseUrl}/${category}`;
     }
 
     if (name) {
@@ -49,15 +51,12 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
           loadingSpinner.style.display = 'none';
-
           const message = data.cavab || 'Bəhanə tapılmadı.';
           resultText.textContent = message;
-
           resultContainer.style.display = 'block';
           resultContainer.classList.remove('fade-in');
           void resultContainer.offsetWidth;
           resultContainer.classList.add('fade-in');
-
         })
         .catch(error => {
           loadingSpinner.style.display = 'none';
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const cardElement = document.querySelector('.card');
   if (cardElement) {
-      cardElement.classList.add('fade-in');
+    cardElement.classList.add('fade-in');
   }
 
   nameInput.addEventListener('keypress', function(e) {
