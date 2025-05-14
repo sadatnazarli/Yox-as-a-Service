@@ -439,7 +439,7 @@ all_excuses = {
         "Ütülənməyib, yox.",
         "Moddan düşüb, yox."
     ],
-    {
+
   "general_yeni": [
     "Bu gün kainat mənimlə eyni fikirdə deyil, ona görə yox.",
     "Mənim daxili uşağım buna 'yox' deyir, onu incidə bilmərəm.",
