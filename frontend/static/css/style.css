@@ -76,7 +76,6 @@ body {
   margin-left: 2px;
 }
 
-/* Using background-image for gradients on flag strips */
 .flag-strip-top:before {
   background-image: linear-gradient(to right, var(--blue), var(--blue) 33%, var(--red) 33%, var(--red) 66%, var(--green) 66%, var(--green) 100%);
 }
@@ -95,32 +94,53 @@ body {
 
 /* Header Styles */
 header {
-  padding: 15px 20px;
+  padding: 10px 0;
+  /* Adjusted padding */
   background-color: var(--white);
   box-shadow: var(--shadow);
   width: 100%;
   margin: 0;
+  position: sticky;
+  /* Başlığı yuxarıda saxlamaq üçün */
+  top: 0;
+  z-index: 1000;
+  /* Digər elementlərin üzərində qalması üçün */
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  /* Yan boşluqlar */
 }
 
 .logo {
   display: flex;
   align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
+  flex-shrink: 0;
+  /* Kiçik ekranlarda logonun sıxılmaması üçün */
 }
 
 .logo-icon {
   background: var(--gradient);
   color: var(--white);
-  width: 55px;
-  height: 55px;
+  width: 50px;
+  /* Biraz kiçildildi */
+  height: 50px;
+  /* Biraz kiçildildi */
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.4rem;
-  border-radius: 10px;
-  margin-right: 12px;
+  font-size: 1.3rem;
+  /* Biraz kiçildildi */
+  border-radius: 8px;
+  /* Dəyişdirildi */
+  margin-right: 10px;
+  /* Dəyişdirildi */
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -137,28 +157,49 @@ header {
 }
 
 .logo-text h1 {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
+  /* Biraz kiçildildi */
   font-weight: 600;
   color: var(--dark);
   margin: 0;
+  line-height: 1.2;
 }
 
 .logo-text p {
   color: #555;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  /* Biraz kiçildildi */
   margin: 0;
 }
+
+.header-actions .bmc-button-header img {
+  height: 38px;
+  /* Başlıq üçün uyğun ölçü */
+  width: auto;
+  display: block;
+  border-radius: 6px;
+  /* BMC şəklinin özündəki border-radius-u tətbiq etmək üçün */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.header-actions .bmc-button-header img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
 
 /* Main Content */
 main {
   flex: 1;
   padding: 30px 20px;
+  /* Başlıq sticky olduğu üçün padding-top əlavə etməyə ehtiyac yoxdur, çünki app-container flex-start edir */
   display: flex;
   align-items: center;
-  /* Vertically centers the card if content is shorter than viewport */
   justify-content: center;
-  /* Horizontally centers the card */
   width: 100%;
+  margin-top: 10px;
+  /* Header hündürlüyü qədər boşluq buraxmaq üçün, dəqiq ölçüyə görə tənzimləyin */
+  /* Əgər header sticky olmasa, bu margin-top lazım deyil */
 }
 
 .card {
@@ -179,7 +220,6 @@ main {
 .intro {
   text-align: center;
   margin-bottom: 25px;
-  /* Adjusted margin */
 }
 
 .intro h2 {
@@ -192,18 +232,18 @@ main {
 .intro p {
   color: #555;
   font-size: 1rem;
+  line-height: 1.5;
 }
 
 /* Important Notice Styles */
 .important-notice {
   background-color: #fff3cd;
-  /* Light yellow, common for warnings */
   color: #856404;
-  /* Dark yellow text */
   border: 1px solid #ffeeba;
   border-radius: 8px;
   padding: 15px 20px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  /* Formadan əvvəlki boşluq artırıldı */
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -215,10 +255,10 @@ main {
 
 .important-notice strong {
   font-weight: 600;
-  /* Ensure Poppins 600 is loaded if not default bold */
 }
 
-/* Support Button Styles */
+/* Support Button Styles (köhnə, artıq istifadə edilmir) */
+/*
 .support-button-container {
   text-align: center;
   margin-bottom: 25px;
@@ -226,20 +266,17 @@ main {
 
 .bmc-button img {
   border-radius: 8px !important;
-  /* Ensure border radius from image is applied */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   height: auto;
-  /* Let the image define its height based on its aspect ratio */
   max-width: 220px;
-  /* Prevent button from being too wide */
 }
 
 .bmc-button img:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
-
+*/
 
 /* Form Elements */
 .form-container {
@@ -278,6 +315,12 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
+#category-select.changed {
+  /* JS-dən gələn class üçün stil */
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+}
+
 .select-wrapper {
   position: relative;
 }
@@ -296,9 +339,7 @@ select:focus {
 select {
   appearance: none;
   -webkit-appearance: none;
-  /* For Safari */
   -moz-appearance: none;
-  /* For Firefox */
   width: 100%;
   background-color: var(--white);
   cursor: pointer;
@@ -327,8 +368,10 @@ select {
   box-shadow: 0 6px 15px rgba(0, 123, 255, 0.45);
 }
 
-.yox-button:active {
-  transform: translateY(1px);
+.yox-button:active,
+.yox-button.clicked {
+  /* .clicked classı üçün stil */
+  transform: translateY(1px) scale(0.98);
   box-shadow: 0 2px 5px rgba(0, 123, 255, 0.35);
 }
 
@@ -385,13 +428,11 @@ select {
   border: 1px solid var(--gray);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: none;
-  /* Initially hidden */
 }
 
 .result-badge {
   position: absolute;
   top: 0px;
-  /* Adjusted to sit on the border */
   left: 50%;
   transform: translateX(-50%);
   background-color: var(--red);
@@ -464,6 +505,29 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .header-content {
+    padding: 0 15px;
+    /* Kiçik ekranlarda yan boşluqları azaltmaq */
+  }
+
+  .logo-text h1 {
+    font-size: 1.3rem;
+  }
+
+  .logo-text p {
+    font-size: 0.75rem;
+  }
+
+  .header-actions .bmc-button-header img {
+    height: 34px;
+    /* Mobil üçün daha kiçik */
+  }
+
+  .main {
+    margin-top: 5px;
+    /* sticky header üçün boşluq */
+  }
+
   .form-container {
     grid-template-columns: 1fr;
     grid-gap: 15px;
@@ -473,16 +537,6 @@ footer {
     padding: 20px;
   }
 
-  .logo-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.2rem;
-  }
-
-  .logo-text h1 {
-    font-size: 1.5rem;
-  }
-
   .intro h2 {
     font-size: 1.4rem;
   }
@@ -490,10 +544,6 @@ footer {
   .important-notice {
     padding: 12px 15px;
     font-size: 0.85rem;
-  }
-
-  .bmc-button img {
-    max-width: 200px;
   }
 
   .result-container {
@@ -511,15 +561,43 @@ footer {
     padding: 0;
   }
 
+  header {
+    padding: 8px 0;
+  }
+
+  .header-content {
+    /* Flex-wrap əlavə edərək kiçik ekranlarda elementlərin alt-alta düşməsini təmin etmək olar */
+    /* Amma bu halda BMC düyməsi logonun altına düşəcək, bu da istənilməyə bilər. */
+    /* Alternativ olaraq logo mətni kiçildilə və ya gizlədilə bilər */
+  }
+
   .logo {
-    flex-direction: column;
-    text-align: center;
+    /* flex-direction: column; Bu başlığı çox dəyişdirər */
+    /* text-align: center; */
   }
 
   .logo-icon {
-    margin-right: 0;
-    margin-bottom: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    margin-right: 8px;
   }
+
+  .logo-text h1 {
+    font-size: 1.1rem;
+    /* Çox kiçik ekranlar üçün */
+  }
+
+  .logo-text p {
+    /* display: none; // Ən kiçik ekranlarda gizlətmək olar */
+    font-size: 0.7rem;
+  }
+
+  .header-actions .bmc-button-header img {
+    height: 32px;
+    /* Ən kiçik ekranlar üçün */
+  }
+
 
   .intro h2 {
     font-size: 1.3rem;
@@ -539,14 +617,6 @@ footer {
     margin-bottom: 15px;
   }
 
-  .support-button-container {
-    margin-bottom: 20px;
-  }
-
-  .bmc-button img {
-    max-width: 180px;
-  }
-
   input,
   select,
   .yox-button {
@@ -559,8 +629,6 @@ footer {
   }
 
   .result-badge {
-    left: 50%;
-    transform: translateX(-50%);
     padding: 4px 10px;
     font-size: 0.7rem;
   }
@@ -571,5 +639,22 @@ footer {
 
   .footer-content p {
     font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 380px) {
+
+  /* Xüsusilə kiçik ekranlar üçün */
+  .logo-text p {
+    display: none;
+    /* API subtitle-ı gizlədək */
+  }
+
+  .logo-text h1 {
+    font-size: 1rem;
+  }
+
+  .header-actions .bmc-button-header img {
+    height: 30px;
   }
 }

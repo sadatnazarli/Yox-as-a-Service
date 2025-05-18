@@ -4,24 +4,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YOX-as-a-Service | Azərbaycan API təcrübəsi</title>
-  <meta name="description" content="Azərbaycansayağı mədəni bəhanələrlə dolu müasir API">
+  <title>YOX API | Azərbaycan Bəhanə Servisi - YOX-as-a-Service</title>
+  <meta name="description"
+    content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin. Bu bəhanə API-si müxtəlif kateqoriyalarda hazır cavablar təqdim edir.">
 
-  <meta property="og:title" content="YOX-as-a-Service | Azərbaycan API təcrübəsi">
-  <meta property="og:description" content="Azərbaycansayağı mədəni bəhanələrlə dolu müasir API">
+  <meta property="og:title" content="YOX API | Azərbaycan Bəhanə Servisi - YOX-as-a-Service">
+  <meta property="og:description"
+    content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin. Bu bəhanə API-si müxtəlif kateqoriyalarda hazır cavablar təqdim edir.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ url_for('index', _external=True) }}">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="YOX-as-a-Service | Azərbaycan API təcrübəsi">
-  <meta name="twitter:description" content="Azərbaycansayağı mədəni bəhanələrlə dolu müasir API">
-
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YOX API | Azərbaycan Bəhanə Servisi - YOX-as-a-Service">
+  <meta name="twitter:description"
+    content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin. Bu bəhanə API-si müxtəlif kateqoriyalarda hazır cavablar təqdim edir.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
 
   <link rel="stylesheet" href="/static/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "YOX API - Azərbaycan Bəhanə Servisi",
+    "alternateName": "YOX-as-a-Service",
+    "description": "YOX API (YOX-as-a-Service) ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin. Bu bəhanə API-si və veb servisi ümumi, sevgi, iş və digər müxtəlif kateqoriyalarda hazır cavablar təqdim edir.",
+    "applicationCategory": "Utility",
+    "operatingSystem": "Any (Web-based)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "AZN"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "YOX-as-a-Service"
+    },
+    "url": "{{ url_for('index', _external=True) }}"
+  }
+  </script>
 </head>
 
 <body>
@@ -29,11 +52,21 @@
     <div class="flag-strip-top"></div>
 
     <header>
-      <div class="logo">
-        <div class="logo-icon">YOX</div>
-        <div class="logo-text">
-          <h1>YOX-as-a-Service</h1>
-          <p>Azərbaycan bəhanə API-si</p>
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">YOX</div>
+          <div class="logo-text">
+            <h1>YOX-as-a-Service</h1>
+            <p>Azərbaycan Bəhanə API-si</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <a href="https://buymeacoffee.com/sedatnazarli" target="_blank" class="bmc-button-header"
+            aria-label="Mənə kofe al">
+            <img
+              src="https://img.buymeacoffee.com/button-api/?text=Mənə kofe al&emoji=☕&slug=sedatnazarli&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=7F7F7F"
+              alt="Mənə kofe al">
+          </a>
         </div>
       </div>
     </header>
@@ -42,22 +75,13 @@
       <div class="card">
         <div class="card-content">
           <div class="intro">
-            <h2>Ən yaxşı "YOX" bəhanələrini əldə edin</h2>
-            <p>Mədəni şəkildə "YOX" deməyin ən asan yolu. Adınızı daxil edin və kateqoriya seçin.</p>
+            <h2>Bu YOX API ilə Ən Yaxşı Bəhanələri Əldə Edin</h2>
+            <p>Mədəni şəkildə "YOX" deməyin ən asan yolu. Adınızı daxil edin və YOX API üçün kateqoriya seçin.</p>
           </div>
 
           <div class="important-notice">
             <p><strong>Vacib Məlumat:</strong> Backend serverimiz pulsuz Render planında yerləşdiyi üçün API
               cavablarının gəlməsində gecikmələr ola bilər. Anlayışınız və səbriniz üçün təşəkkür edirik!</p>
-          </div>
-
-          <div class="support-button-container">
-            <a href="https://buymeacoffee.com/sedatnazarli" target="_blank" class="bmc-button"
-              aria-label="Mənə kofe al">
-              <img
-                src="https://img.buymeacoffee.com/button-api/?text=Mənə kofe al&emoji=☕&slug=sedatnazarli&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=7F7F7F"
-                alt="Mənə kofe al">
-            </a>
           </div>
 
           <div class="form-container">
@@ -148,8 +172,8 @@
 
     <footer>
       <div class="footer-content">
-        <p>© 2025 YOX-as-a-Service</p>
-        <p>Mədəni bəhanələr Azərbaycan tərzində</p>
+        <p>© <span id="current-year">2025</span> YOX-as-a-Service</p>
+        <p>Mədəni bəhanələr Azərbaycan tərzində | YOX API</p>
       </div>
     </footer>
 
@@ -157,6 +181,9 @@
   </div>
 
   <script src="/static/js/script.js"></script>
+  <script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 
 </html>
