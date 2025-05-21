@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', function() {
     nameInput.value = localStorage.getItem('userName');
   }
 
+  nameInput.placeholder = "Adınızı daxil edin (optional)";
+
   yoxButton.addEventListener('click', function() {
     yoxButton.classList.add('clicked');
     setTimeout(() => yoxButton.classList.remove('clicked'), 200);
@@ -20,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const name = nameInput.value.trim();
     const category = categorySelect.value;
 
+    // Ad varsa local storage-də saxlayırıq
     if (name) {
       localStorage.setItem('userName', name);
     } else {
