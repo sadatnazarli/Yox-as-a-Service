@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YOX API Sənədləşdirmə | Azərbaycan Bəhanə Servisi</title>
+  <meta name="description"
+    content="YOX API-nin istifadə qaydaları. Curl əmrləri, JavaScript nümunələri, parametrlər və cavab formatları.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="flag-strip-top"></div>
+
+    <header>
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">YOX</div>
+          <div class="logo-text">
+            <h1>YOX-as-a-Service</h1>
+            <p>Azərbaycan Bəhanə API-si</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <a href="/index.html" class="header-link">Əsas Səhifə</a>
+          <button id="why-yox-button-docs" class="header-link">Niyə YOX?</button>
+          <a href="https://buymeacoffee.com/sedatnazarli" target="_blank" class="bmc-button-header"
+            aria-label="Mənə kofe al">
+            <img
+              src="https://img.buymeacoffee.com/button-api/?text=Mənə kofe al&emoji=☕&slug=sedatnazarli&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=7F7F7F"
+              alt="Mənə kofe al">
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="card api-docs-card">
+        <div class="card-content">
+          <h2 class="api-docs-title">YOX API Sənədləşdirmə</h2>
+          <p class="api-docs-intro">YOX API Azərbaycan tərzində mədəni "yox" bəhanələri təmin edir. Bu API-dən istifadə
+            etmək çox asandır. Aşağıda API-nin istifadə qaydaları, parametrləri və nümunələr verilmişdir.</p>
+
+          <section class="api-section">
+            <h3>API Əsas URL</h3>
+            <p>Bütün sorğular üçün əsas URL:</p>
+            <pre><code>https://yox-as-a-service.onrender.com/</code></pre>
+          </section>
+
+          <section class="api-section">
+            <h3>Endpoints</h3>
+            <p>Bəhanə əldə etmək üçün istifadə olunan əsas endpoint kateqoriya adıdır:</p>
+            <pre><code>GET /&lt;kateqoriya_adı&gt;</code></pre>
+            <p>Məsələn:</p>
+            <pre><code>GET /general</code></pre>
+            <pre><code>GET /sevgi_yeni</code></pre>
+          </section>
+
+          <section class="api-section">
+            <h3>Parametrlər</h3>
+            <h4>`ad` (optional)</h4>
+            <p>Bəhanənin içərisinə daxil ediləcək ad. Əgər təmin olunarsa, bəhanə bu adla fərdiləşdirilə bilər.</p>
+            <pre><code>GET /general?ad=Elvin</code></pre>
+            <p><strong>Nümunə Cavab:</strong></p>
+            <pre><code>{
+  "cavab": "Elvin, təəssüf ki, bu gün mümkün deyil. Başqa bir vaxt inşallah."
+}</code></pre>
+          </section>
+
+          <section class="api-section">
+            <h3>Cavab Formatı</h3>
+            <p>Bütün cavablar JSON formatında qaytarılır.</p>
+            <pre><code>{
+  "cavab": "Bəhanə mətni burada olacaq."
+}</code></pre>
+            <p>Xəta baş verdikdə cavab formatı:</p>
+            <pre><code>{
+  "xeta": "Xəta mesajı burada olacaq."
+}</code></pre>
+          </section>
+
+          <section class="api-section">
+            <h3>Nümunələr</h3>
+
+            <h4>Curl ilə Ümumi Bəhanə</h4>
+            <pre><code>curl "https://yox-as-a-service.onrender.com/general"</code></pre>
+            <p><strong>Nümunə Cavab:</strong></p>
+            <pre><code>{
+  "cavab": "Bağışlayın, işim çıxdı."
+}</code></pre>
+
+            <h4>Curl ilə Adlı Sevgi Bəhanəsi</h4>
+            <pre><code>curl "https://yox-as-a-service.onrender.com/sevgi?ad=Ayşən"</code></pre>
+            <p><strong>Nümunə Cavab:</strong></p>
+            <pre><code>{
+  "cavab": "Ayşən, qismət deyilmiş, alınmadı."
+}</code></pre>
+
+            <h4>JavaScript ilə Bəhanə Əldə Etmə</h4>
+            <pre><code>const getName = "Orxan";
+const getCategory = "is";
+
+fetch(`https://yox-as-a-service.onrender.com/${getCategory}?ad=${encodeURIComponent(getName)}`)
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById('result-text').textContent = data.cavab;
+  })
+  .catch(error => {
+    console.error('Xəta:', error);
+    document.getElementById('result-text').textContent = 'Bəhanə əldə edilmədi.';
+  });</code></pre>
+          </section>
+
+          <section class="api-section">
+            <h3>Mövcud Kateqoriyalar</h3>
+            <p>Aşağıdakı kateqoriyalar mövcuddur:</p>
+            <ul class="category-list">
+              <li><code>general</code> (Ümumi)</li>
+              <li><code>sevgi</code> (Sevgi)</li>
+              <li><code>dost</code> (Dostluq)</li>
+              <li><code>muellim</code> (Müəllim)</li>
+              <li><code>valideyn</code> (Valideyn)</li>
+              <li><code>is</code> (İş)</li>
+              <li><code>toy_yox</code> (Toy)</li>
+              <li><code>qonaqliq_yox</code> (Qonaqlıq)</li>
+              <li><code>yol_yox</code> (Yol)</li>
+              <li><code>sosial_media_yox</code> (Sosial Media)</li>
+              <li><code>oyun_yox</code> (Oyun)</li>
+              <li><code>texnologiya_yox</code> (Texnologiya)</li>
+              <li><code>pul_yox</code> (Pul)</li>
+              <li><code>saglamliq_yox</code> (Sağlamlıq)</li>
+              <li><code>qonsu_yox</code> (Qonşu)</li>
+              <li><code>burokratiya_yox</code> (Bürokratiya)</li>
+              <li><code>ev_isleri_yox</code> (Ev İşləri)</li>
+              <li><code>felsefi_yox</code> (Fəlsəfi)</li>
+              <li><code>hava_yox</code> (Hava)</li>
+              <li><code>paltar_yox</code> (Paltar)</li>
+              <li><code>general_yeni</code> (Ümumi - Yeni)</li>
+              <li>...və digər "Yeni" və "Xüsusi" kateqoriyalar.</li>
+            </ul>
+          </section>
+
+          <div class="important-notice">
+            <p><strong>Qeyd:</strong> Backend serverimiz pulsuz Render planında yerləşdiyi üçün API cavablarının
+              gəlməsində gecikmələr ola bilər. Anlayışınız və səbriniz üçün təşəkkür edirik!</p>
+          </div>
+
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <p>© <span id="current-year-docs">2025</span> YOX-as-a-Service</p>
+        <p>Mədəni bəhanələr Azərbaycan tərzində | YOX API</p>
+      </div>
+    </footer>
+
+    <div class="flag-strip-bottom"></div>
+  </div>
+
+  <div id="why-yox-modal-docs" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <h2>Niyə "YOX"?</h2>
+      <p>Azərbaycan mədəniyyətində "yox" demək bəzən birbaşa rədd etməkdən daha incə və dolaylı yollarla ifadə olunur.
+        Bu, qarşı tərəfi incitməmək, münasibətləri qorumaq və ya sadəcə olaraq mədəni nəzakət qaydalarına riayət etmək
+        məqsədi daşıyır.</p>
+      <p>Birbaşa "yox" əvəzinə, insanlar tez-tez müxtəlif bəhanələr gətirirlər. Bu bəhanələr vəziyyətdən, münasibətin
+        növündən (dost, ailə, iş) və mövzudan asılı olaraq dəyişir. Məsələn, "evdə qonaq var", "işim çıxdı", "başım
+        qarışıqdır" kimi ifadələr geniş yayılmışdır.</p>
+      <p>YOX API-nin məqsədi məhz bu mədəni nüansı əks etdirmək və istifadəçilərə müxtəlif vəziyyətlər üçün Azərbaycan
+        tərzində "yox" deməyə kömək etməkdir. Bu, həm əyləncəli, həm də mədəniyyəti anlamaq üçün bir vasitədir.</p>
+    </div>
+  </div>
+
+  <script src="/static/js/script.js"></script>
+  <script>
+    document.getElementById('current-year-docs').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

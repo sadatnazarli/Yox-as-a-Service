@@ -12,72 +12,79 @@ document.addEventListener('DOMContentLoaded', function() {
   const randomCategoryButton = document.getElementById('random-category');
   const cardElement = document.querySelector('.card');
 
+  const whyYoxButton = document.getElementById('why-yox-button');
+  const whyYoxButtonDocs = document.getElementById('why-yox-button-docs');
+  const whyYoxModal = document.getElementById('why-yox-modal') || document.getElementById('why-yox-modal-docs');
+  const closeModalButton = whyYoxModal ? whyYoxModal.querySelector('.close-button') : null;
+
   if (localStorage.getItem('userName')) {
     nameInput.value = localStorage.getItem('userName');
   }
 
   loadHistory();
 
-  yoxButton.addEventListener('click', function() {
-    yoxButton.classList.add('clicked');
-    setTimeout(() => yoxButton.classList.remove('clicked'), 200);
+  if (yoxButton) {
+    yoxButton.addEventListener('click', function() {
+      yoxButton.classList.add('clicked');
+      setTimeout(() => yoxButton.classList.remove('clicked'), 200);
 
-    loadingSpinner.style.display = 'flex';
-    resultContainer.style.display = 'none';
+      loadingSpinner.style.display = 'flex';
+      resultContainer.style.display = 'none';
 
-    const name = nameInput.value.trim();
-    const category = categorySelect.value;
-    const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
+      const name = nameInput.value.trim();
+      const category = categorySelect.value;
+      const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
 
-    if (name) {
-      localStorage.setItem('userName', name);
-    } else {
-      localStorage.removeItem('userName');
-    }
+      if (name) {
+        localStorage.setItem('userName', name);
+      } else {
+        localStorage.removeItem('userName');
+      }
 
-    const baseUrl = "https://yox-as-a-service.onrender.com";
-    let apiUrl = `${baseUrl}/${category}`;
+      const baseUrl = "https://yox-as-a-service.onrender.com";
+      let apiUrl = `${baseUrl}/${category}`;
 
-    if (name) {
-      apiUrl += `?ad=${encodeURIComponent(name)}`;
-    }
+      if (name) {
+        apiUrl += `?ad=${encodeURIComponent(name)}`;
+      }
 
-    setTimeout(() => {
-      fetch(apiUrl)
-        .then(response => {
-          if (!response.ok) {
-            return response.json().then(err => {
-              throw new Error(`${response.status}: ${err.xeta || 'API sorğusu uğursuz oldu'}`);
+      setTimeout(() => {
+        fetch(apiUrl)
+          .then(response => {
+            if (!response.ok) {
+              return response.json().then(err => {
+                throw new Error(`${response.status}: ${err.xeta || 'API sorğusu uğursuz oldu'}`);
+              });
+            }
+            return response.json();
+          })
+          .then(data => {
+            loadingSpinner.style.display = 'none';
+            const message = data.cavab || 'Bəhanə tapılmadı.';
+            resultText.textContent = message;
+            resultContainer.style.display = 'block';
+            resultContainer.classList.remove('fade-in');
+            void resultContainer.offsetWidth;
+            resultContainer.classList.add('fade-in');
+
+            addToHistory({
+              category: categoryText,
+              message: message,
+              timestamp: new Date().toLocaleTimeString('az-AZ', {hour: '2-digit', minute:'2-digit'})
             });
-          }
-          return response.json();
-        })
-        .then(data => {
-          loadingSpinner.style.display = 'none';
-          const message = data.cavab || 'Bəhanə tapılmadı.';
-          resultText.textContent = message;
-          resultContainer.style.display = 'block';
-          resultContainer.classList.remove('fade-in');
-          void resultContainer.offsetWidth;
-          resultContainer.classList.add('fade-in');
-
-          addToHistory({
-            category: categoryText,
-            message: message,
-            timestamp: new Date().toLocaleTimeString('az-AZ', {hour: '2-digit', minute:'2-digit'})
+          })
+          .catch(error => {
+            loadingSpinner.style.display = 'none';
+            resultText.textContent = `Xəta: ${error.message || 'Sistemlə əlaqə yaratmaq mümkün olmadı.'}`;
+            resultContainer.style.display = 'block';
+            resultContainer.classList.remove('fade-in');
+            void resultContainer.offsetWidth;
+            resultContainer.classList.add('fade-in');
+            console.error('Xəta:', error);
           });
-        })
-        .catch(error => {
-          loadingSpinner.style.display = 'none';
-          resultText.textContent = `Xəta: ${error.message || 'Sistemlə əlaqə yaratmaq mümkün olmadı.'}`;
-          resultContainer.style.display = 'block';
-          resultContainer.classList.remove('fade-in');
-          void resultContainer.offsetWidth;
-          resultContainer.classList.add('fade-in');
-          console.error('Xəta:', error);
-        });
-    }, 800);
-  });
+      }, 800);
+    });
+  }
 
   function addToHistory(item) {
     let history = JSON.parse(localStorage.getItem('yoxHistory') || '[]');
@@ -93,11 +100,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const history = JSON.parse(localStorage.getItem('yoxHistory') || '[]');
 
     if (history.length === 0) {
-      historyContainer.style.display = 'none';
+      if (historyContainer) historyContainer.style.display = 'none';
       return;
     }
 
-    historyList.innerHTML = '';
+    if (historyList) historyList.innerHTML = '';
     history.forEach(item => {
       const historyItem = document.createElement('div');
       historyItem.className = 'history-item';
@@ -110,11 +117,13 @@ document.addEventListener('DOMContentLoaded', function() {
       `;
 
       historyItem.addEventListener('click', function() {
-        resultText.textContent = item.message;
-        resultContainer.style.display = 'block';
-        resultContainer.classList.remove('fade-in');
-        void resultContainer.offsetWidth;
-        resultContainer.classList.add('fade-in');
+        if (resultText && resultContainer) {
+          resultText.textContent = item.message;
+          resultContainer.style.display = 'block';
+          resultContainer.classList.remove('fade-in');
+          void resultContainer.offsetWidth;
+          resultContainer.classList.add('fade-in');
+        }
 
         historyItem.classList.add('highlight');
         setTimeout(() => {
@@ -122,73 +131,77 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 1000);
       });
 
-      historyList.appendChild(historyItem);
+      if (historyList) historyList.appendChild(historyItem);
     });
 
-    historyContainer.style.display = 'block';
+    if (historyContainer) historyContainer.style.display = 'block';
   }
 
-  copyButton.addEventListener('click', function() {
-    const textToCopy = resultText.textContent;
-    const textArea = document.createElement('textarea');
-    textArea.value = textToCopy;
-    document.body.appendChild(textArea);
-    textArea.select();
-    try {
-      document.execCommand('copy');
-      copyButton.classList.add('success');
-      copyButton.querySelector('span').textContent = 'Kopyalandı!';
-      setTimeout(function() {
-        copyButton.classList.remove('success');
-        copyButton.querySelector('span').textContent = 'Kopyala';
-      }, 2000);
-    } catch (err) {
-      console.error('Kopyalama uğursuz oldu:', err);
-      resultText.textContent = "Kopyalama uğursuz oldu. Zəhmət olmasa mətni əl ilə kopyalayın.";
-    } finally {
-      document.body.removeChild(textArea);
-    }
-  });
-
-  shareButton.addEventListener('click', function() {
-    const textToShare = resultText.textContent;
-
-    if (navigator.share) {
-      navigator.share({
-          title: 'YOX API Bəhanəsi',
-          text: textToShare,
-          url: window.location.href
-        })
-        .then(() => {
-          shareButton.classList.add('success');
-          shareButton.querySelector('span').textContent = 'Paylaşıldı!';
-          setTimeout(function() {
-            shareButton.classList.remove('success');
-            shareButton.querySelector('span').textContent = 'Paylaş';
-          }, 2000);
-        })
-        .catch((error) => console.error('Paylaşma xətası:', error));
-    } else {
+  if (copyButton) {
+    copyButton.addEventListener('click', function() {
+      const textToCopy = resultText.textContent;
       const textArea = document.createElement('textarea');
-      textArea.value = textToShare;
+      textArea.value = textToCopy;
       document.body.appendChild(textArea);
       textArea.select();
       try {
         document.execCommand('copy');
-        shareButton.classList.add('success');
-        shareButton.querySelector('span').textContent = 'Kopyalandı!';
+        copyButton.classList.add('success');
+        copyButton.querySelector('span').textContent = 'Kopyalandı!';
         setTimeout(function() {
-          shareButton.classList.remove('success');
-          shareButton.querySelector('span').textContent = 'Paylaş';
+          copyButton.classList.remove('success');
+          copyButton.querySelector('span').textContent = 'Kopyala';
         }, 2000);
       } catch (err) {
         console.error('Kopyalama uğursuz oldu:', err);
-        resultText.textContent = "Paylaşma dəstəklənmir. Zəhmət olmasa mətni əl ilə kopyalayın.";
+        if (resultText) resultText.textContent = "Kopyalama uğursuz oldu. Zəhmət olmasa mətni əl ilə kopyalayın.";
       } finally {
         document.body.removeChild(textArea);
       }
-    }
-  });
+    });
+  }
+
+  if (shareButton) {
+    shareButton.addEventListener('click', function() {
+      const textToShare = resultText.textContent;
+
+      if (navigator.share) {
+        navigator.share({
+            title: 'YOX API Bəhanəsi',
+            text: textToShare,
+            url: window.location.href
+          })
+          .then(() => {
+            shareButton.classList.add('success');
+            shareButton.querySelector('span').textContent = 'Paylaşıldı!';
+            setTimeout(function() {
+              shareButton.classList.remove('success');
+              shareButton.querySelector('span').textContent = 'Paylaş';
+            }, 2000);
+          })
+          .catch((error) => console.error('Paylaşma xətası:', error));
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = textToShare;
+        document.body.appendChild(textArea);
+        textArea.select();
+        try {
+          document.execCommand('copy');
+          shareButton.classList.add('success');
+          shareButton.querySelector('span').textContent = 'Kopyalandı!';
+          setTimeout(function() {
+            shareButton.classList.remove('success');
+            shareButton.querySelector('span').textContent = 'Paylaş';
+          }, 2000);
+        } catch (err) {
+          console.error('Kopyalama uğursuz oldu:', err);
+          if (resultText) resultText.textContent = "Paylaşma dəstəklənmir. Zəhmət olmasa mətni əl ilə kopyalayın.";
+        } finally {
+          document.body.removeChild(textArea);
+        }
+      }
+    });
+  }
 
   if (randomCategoryButton) {
     randomCategoryButton.addEventListener('click', function() {
@@ -204,15 +217,44 @@ document.addEventListener('DOMContentLoaded', function() {
     cardElement.classList.add('fade-in');
   }
 
-  nameInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      yoxButton.click();
-    }
-  });
+  if (nameInput) {
+    nameInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (yoxButton) yoxButton.click();
+      }
+    });
+  }
 
-  categorySelect.addEventListener('change', function() {
-    this.classList.add('changed');
-    setTimeout(() => this.classList.remove('changed'), 500);
+  if (categorySelect) {
+    categorySelect.addEventListener('change', function() {
+      this.classList.add('changed');
+      setTimeout(() => this.classList.remove('changed'), 500);
+    });
+  }
+
+  // "Niyə YOX?" modal funksionallığı
+  function openModal() {
+    if (whyYoxModal) whyYoxModal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    if (whyYoxModal) whyYoxModal.style.display = 'none';
+  }
+
+  if (whyYoxButton) {
+    whyYoxButton.addEventListener('click', openModal);
+  }
+  if (whyYoxButtonDocs) {
+    whyYoxButtonDocs.addEventListener('click', openModal);
+  }
+  if (closeModalButton) {
+    closeModalButton.addEventListener('click', closeModal);
+  }
+
+  window.addEventListener('click', function(event) {
+    if (event.target === whyYoxModal) {
+      closeModal();
+    }
   });
 });
