@@ -5,12 +5,71 @@ document.addEventListener('DOMContentLoaded', function() {
   const resultText = document.getElementById('result-text');
   const loadingSpinner = document.getElementById('loading-spinner');
   const resultContainer = document.getElementById('result-container');
+  const copyButton = document.getElementById('copy-button');
+  const shareButton = document.getElementById('share-button');
+  const historyList = document.getElementById('history-list');
+  const historyContainer = document.getElementById('history-container');
 
+  // Əvvəlki ad-ı local storage-dən yükləyirik (əgər varsa)
   if (localStorage.getItem('userName')) {
     nameInput.value = localStorage.getItem('userName');
   }
 
-  nameInput.placeholder = "Adınızı daxil edin (optional)";
+  // Əvvəlki bəhanə tarixçəsini yükləyirik
+  loadHistory();
+
+  // Kopyalama düyməsi funksiyası
+  copyButton.addEventListener('click', function() {
+    const textToCopy = resultText.textContent;
+
+    navigator.clipboard.writeText(textToCopy).then(function() {
+      // Kopya uğurlu olduqda düyməni animasiya et
+      copyButton.classList.add('success');
+      copyButton.querySelector('span').textContent = 'Kopyalandı!';
+
+      setTimeout(function() {
+        copyButton.classList.remove('success');
+        copyButton.querySelector('span').textContent = 'Kopyala';
+      }, 2000);
+    }, function() {
+      // Xəta baş verdikdə
+      alert('Kopyalama uğursuz oldu. Zəhmət olmasa yenidən cəhd edin.');
+    });
+  });
+
+  // Paylaşma düyməsi funksiyası
+  shareButton.addEventListener('click', function() {
+    const textToShare = resultText.textContent;
+
+    if (navigator.share) {
+      navigator.share({
+        title: 'YOX API Bəhanəsi',
+        text: textToShare,
+        url: window.location.href
+      })
+      .then(() => {
+        shareButton.classList.add('success');
+        shareButton.querySelector('span').textContent = 'Paylaşıldı!';
+
+        setTimeout(function() {
+          shareButton.classList.remove('success');
+          shareButton.querySelector('span').textContent = 'Paylaş';
+        }, 2000);
+      })
+      .catch((error) => console.error('Paylaşma xətası:', error));
+    } else {
+      // Web Share API dəstəklənmirsə, kopya et
+      navigator.clipboard.writeText(textToShare).then(function() {
+        shareButton.classList.add('success');
+        shareButton.querySelector('span').textContent = 'Kopyalandı!';
+
+        setTimeout(function() {
+          shareButton.classList.remove('success');
+          shareButton.querySelector('span').textContent = 'Paylaş';
+        }, 2000);
+      });
+    }
+  });
 
   yoxButton.addEventListener('click', function() {
     yoxButton.classList.add('clicked');
@@ -21,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const name = nameInput.value.trim();
     const category = categorySelect.value;
+    const categoryText = categorySelect.options[categorySelect.selectedIndex].text;
 
-    // Ad varsa local storage-də saxlayırıq
     if (name) {
       localStorage.setItem('userName', name);
     } else {
@@ -34,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     apiUrl = `${baseUrl}/${category}`;
 
+    // Ad parametri varsa yalnız o zaman URL-ə əlavə edirik
     if (name) {
       apiUrl += `?ad=${encodeURIComponent(name)}`;
     }
@@ -56,6 +116,13 @@ document.addEventListener('DOMContentLoaded', function() {
           resultContainer.classList.remove('fade-in');
           void resultContainer.offsetWidth;
           resultContainer.classList.add('fade-in');
+
+          // Bəhanəni tarixçəyə əlavə et
+          addToHistory({
+            category: categoryText,
+            message: message,
+            timestamp: new Date().toLocaleTimeString('az-AZ', {hour: '2-digit', minute:'2-digit'})
+          });
         })
         .catch(error => {
           loadingSpinner.style.display = 'none';
@@ -68,6 +135,80 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, 800);
   });
+
+  // Tarixçəyə yeni bəhanə əlavə et
+  function addToHistory(item) {
+    // Tarixçəni local storage-dən al
+    let history = JSON.parse(localStorage.getItem('yoxHistory') || '[]');
+
+    // Yeni bəhanəni əvvələ əlavə et
+    history.unshift(item);
+
+    // Tarixçəni maksimum 5 elementlə məhdudlaşdır
+    if (history.length > 5) {
+      history = history.slice(0, 5);
+    }
+
+    // Tarixçəni saxla
+    localStorage.setItem('yoxHistory', JSON.stringify(history));
+
+    // Tarixçə siyahısını yenilə
+    loadHistory();
+  }
+
+  // Tarixçəni yüklə və göstər
+  function loadHistory() {
+    const history = JSON.parse(localStorage.getItem('yoxHistory') || '[]');
+
+    if (history.length === 0) {
+      historyContainer.style.display = 'none';
+      return;
+    }
+
+    historyList.innerHTML = '';
+    history.forEach(item => {
+      const historyItem = document.createElement('div');
+      historyItem.className = 'history-item';
+      historyItem.innerHTML = `
+        <div class="history-item-header">
+          <span class="history-category">${item.category}</span>
+          <span class="history-time">${item.timestamp}</span>
+        </div>
+        <div class="history-message">${item.message}</div>
+      `;
+
+      // Tarixçə elementinə klikləmək üçün hadisə əlavə et
+      historyItem.addEventListener('click', function() {
+        resultText.textContent = item.message;
+        resultContainer.style.display = 'block';
+        resultContainer.classList.remove('fade-in');
+        void resultContainer.offsetWidth;
+        resultContainer.classList.add('fade-in');
+
+        // Vurğula
+        historyItem.classList.add('highlight');
+        setTimeout(() => {
+          historyItem.classList.remove('highlight');
+        }, 1000);
+      });
+
+      historyList.appendChild(historyItem);
+    });
+
+    historyContainer.style.display = 'block';
+  }
+
+  // Təsadüfi kateqoriya seçmək üçün düymə və funksiya
+  const randomCategoryButton = document.getElementById('random-category');
+  if (randomCategoryButton) {
+    randomCategoryButton.addEventListener('click', function() {
+      const options = categorySelect.querySelectorAll('option');
+      const randomIndex = Math.floor(Math.random() * options.length);
+      categorySelect.selectedIndex = randomIndex;
+      categorySelect.classList.add('changed');
+      setTimeout(() => categorySelect.classList.remove('changed'), 500);
+    });
+  }
 
   const cardElement = document.querySelector('.card');
   if (cardElement) {

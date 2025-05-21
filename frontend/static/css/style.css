@@ -94,17 +94,14 @@ body {
 
 /* Header Styles */
 header {
-  padding: 10px 0;
-  /* Adjusted padding */
+  padding: 10px 0; /* Adjusted padding */
   background-color: var(--white);
   box-shadow: var(--shadow);
   width: 100%;
   margin: 0;
-  position: sticky;
-  /* Başlığı yuxarıda saxlamaq üçün */
+  position: sticky; /* Başlığı yuxarıda saxlamaq üçün */
   top: 0;
-  z-index: 1000;
-  /* Digər elementlərin üzərində qalması üçün */
+  z-index: 1000; /* Digər elementlərin üzərində qalması üçün */
 }
 
 .header-content {
@@ -113,34 +110,27 @@ header {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
-  /* Yan boşluqlar */
+  padding: 0 20px; /* Yan boşluqlar */
 }
 
 .logo {
   display: flex;
   align-items: center;
-  flex-shrink: 0;
-  /* Kiçik ekranlarda logonun sıxılmaması üçün */
+  flex-shrink: 0; /* Kiçik ekranlarda logonun sıxılmaması üçün */
 }
 
 .logo-icon {
   background: var(--gradient);
   color: var(--white);
-  width: 50px;
-  /* Biraz kiçildildi */
-  height: 50px;
-  /* Biraz kiçildildi */
+  width: 50px; /* Biraz kiçildildi */
+  height: 50px; /* Biraz kiçildildi */
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.3rem;
-  /* Biraz kiçildildi */
-  border-radius: 8px;
-  /* Dəyişdirildi */
-  margin-right: 10px;
-  /* Dəyişdirildi */
+  font-size: 1.3rem; /* Biraz kiçildildi */
+  border-radius: 8px; /* Dəyişdirildi */
+  margin-right: 10px; /* Dəyişdirildi */
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -157,8 +147,7 @@ header {
 }
 
 .logo-text h1 {
-  font-size: 1.5rem;
-  /* Biraz kiçildildi */
+  font-size: 1.5rem; /* Biraz kiçildildi */
   font-weight: 600;
   color: var(--dark);
   margin: 0;
@@ -167,39 +156,33 @@ header {
 
 .logo-text p {
   color: #555;
-  font-size: 0.8rem;
-  /* Biraz kiçildildi */
+  font-size: 0.8rem; /* Biraz kiçildildi */
   margin: 0;
 }
 
 .header-actions .bmc-button-header img {
-  height: 38px;
-  /* Başlıq üçün uyğun ölçü */
+  height: 38px; /* Başlıq üçün uyğun ölçü */
   width: auto;
   display: block;
-  border-radius: 6px;
-  /* BMC şəklinin özündəki border-radius-u tətbiq etmək üçün */
+  border-radius: 6px; /* BMC şəklinin özündəki border-radius-u tətbiq etmək üçün */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-
 .header-actions .bmc-button-header img:hover {
   transform: scale(1.05);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 
 /* Main Content */
 main {
   flex: 1;
-  padding: 30px 20px;
-  /* Başlıq sticky olduğu üçün padding-top əlavə etməyə ehtiyac yoxdur, çünki app-container flex-start edir */
+  padding: 30px 20px; /* Başlıq sticky olduğu üçün padding-top əlavə etməyə ehtiyac yoxdur, çünki app-container flex-start edir */
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 10px;
-  /* Header hündürlüyü qədər boşluq buraxmaq üçün, dəqiq ölçüyə görə tənzimləyin */
-  /* Əgər header sticky olmasa, bu margin-top lazım deyil */
+  margin-top: 10px; /* Header hündürlüyü qədər boşluq buraxmaq üçün, dəqiq ölçüyə görə tənzimləyin */
+                   /* Əgər header sticky olmasa, bu margin-top lazım deyil */
 }
 
 .card {
@@ -242,8 +225,7 @@ main {
   border: 1px solid #ffeeba;
   border-radius: 8px;
   padding: 15px 20px;
-  margin-bottom: 25px;
-  /* Formadan əvvəlki boşluq artırıldı */
+  margin-bottom: 25px; /* Formadan əvvəlki boşluq artırıldı */
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -315,8 +297,7 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-#category-select.changed {
-  /* JS-dən gələn class üçün stil */
+#category-select.changed { /* JS-dən gələn class üçün stil */
   border-color: var(--green);
   box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
 }
@@ -368,9 +349,7 @@ select {
   box-shadow: 0 6px 15px rgba(0, 123, 255, 0.45);
 }
 
-.yox-button:active,
-.yox-button.clicked {
-  /* .clicked classı üçün stil */
+.yox-button:active, .yox-button.clicked { /* .clicked classı üçün stil */
   transform: translateY(1px) scale(0.98);
   box-shadow: 0 2px 5px rgba(0, 123, 255, 0.35);
 }
@@ -506,28 +485,21 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-content {
-    padding: 0 15px;
-    /* Kiçik ekranlarda yan boşluqları azaltmaq */
+    padding: 0 15px; /* Kiçik ekranlarda yan boşluqları azaltmaq */
   }
-
   .logo-text h1 {
     font-size: 1.3rem;
   }
-
   .logo-text p {
     font-size: 0.75rem;
   }
-
   .header-actions .bmc-button-header img {
-    height: 34px;
-    /* Mobil üçün daha kiçik */
+    height: 34px; /* Mobil üçün daha kiçik */
   }
 
   .main {
-    margin-top: 5px;
-    /* sticky header üçün boşluq */
+      margin-top: 5px; /* sticky header üçün boşluq */
   }
-
   .form-container {
     grid-template-columns: 1fr;
     grid-gap: 15px;
@@ -564,11 +536,10 @@ footer {
   header {
     padding: 8px 0;
   }
-
   .header-content {
-    /* Flex-wrap əlavə edərək kiçik ekranlarda elementlərin alt-alta düşməsini təmin etmək olar */
-    /* Amma bu halda BMC düyməsi logonun altına düşəcək, bu da istənilməyə bilər. */
-    /* Alternativ olaraq logo mətni kiçildilə və ya gizlədilə bilər */
+     /* Flex-wrap əlavə edərək kiçik ekranlarda elementlərin alt-alta düşməsini təmin etmək olar */
+     /* Amma bu halda BMC düyməsi logonun altına düşəcək, bu da istənilməyə bilər. */
+     /* Alternativ olaraq logo mətni kiçildilə və ya gizlədilə bilər */
   }
 
   .logo {
@@ -582,20 +553,15 @@ footer {
     font-size: 1.1rem;
     margin-right: 8px;
   }
-
   .logo-text h1 {
-    font-size: 1.1rem;
-    /* Çox kiçik ekranlar üçün */
+    font-size: 1.1rem; /* Çox kiçik ekranlar üçün */
   }
-
   .logo-text p {
     /* display: none; // Ən kiçik ekranlarda gizlətmək olar */
     font-size: 0.7rem;
   }
-
   .header-actions .bmc-button-header img {
-    height: 32px;
-    /* Ən kiçik ekranlar üçün */
+    height: 32px; /* Ən kiçik ekranlar üçün */
   }
 
 
@@ -642,19 +608,14 @@ footer {
   }
 }
 
-@media (max-width: 380px) {
-
-  /* Xüsusilə kiçik ekranlar üçün */
-  .logo-text p {
-    display: none;
-    /* API subtitle-ı gizlədək */
-  }
-
-  .logo-text h1 {
-    font-size: 1rem;
-  }
-
-  .header-actions .bmc-button-header img {
-    height: 30px;
-  }
+@media (max-width: 380px) { /* Xüsusilə kiçik ekranlar üçün */
+    .logo-text p {
+        display: none; /* API subtitle-ı gizlədək */
+    }
+    .logo-text h1 {
+        font-size: 1rem;
+    }
+    .header-actions .bmc-button-header img {
+      height: 30px;
+    }
 }
