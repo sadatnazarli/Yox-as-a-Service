@@ -8,6 +8,8 @@
   --gray: #ced4da;
   --shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
   --gradient: linear-gradient(135deg, var(--blue) 0%, #0056b3 100%);
+  --success-color: #28a745;
+  --warning-color: #ffc107;
 }
 
 * {
@@ -66,42 +68,33 @@ body {
   position: relative;
 }
 
-.flag-strip-top:before,
-.flag-strip-bottom:before {
-  margin-right: 2px;
-}
-
-.flag-strip-top:after,
-.flag-strip-bottom:after {
-  margin-left: 2px;
-}
-
 .flag-strip-top:before {
-  background-image: linear-gradient(to right, var(--blue), var(--blue) 33%, var(--red) 33%, var(--red) 66%, var(--green) 66%, var(--green) 100%);
+  background-image: linear-gradient(to right, #0096FF, #0096FF 33%, #E30A17 33%, #E30A17 66%, #009B48 66%, #009B48 100%);
 }
 
 .flag-strip-top:after {
-  background-image: linear-gradient(to right, var(--green), var(--green) 33%, var(--blue) 33%, var(--blue) 66%, var(--red) 66%, var(--red) 100%);
+  background-image: linear-gradient(to right, #009B48, #009B48 33%, #0096FF 33%, #0096FF 66%, #E30A17 66%, #E30A17 100%);
 }
 
 .flag-strip-bottom:before {
-  background-image: linear-gradient(to right, var(--green), var(--green) 33%, var(--red) 33%, var(--red) 66%, var(--blue) 66%, var(--blue) 100%);
+  background-image: linear-gradient(to right, #009B48, #009B48 33%, #E30A17 33%, #E30A17 66%, #0096FF 66%, #0096FF 100%);
 }
 
 .flag-strip-bottom:after {
-  background-image: linear-gradient(to right, var(--red), var(--red) 33%, var(--green) 33%, var(--green) 66%, var(--blue) 66%, var(--blue) 100%);
+  background-image: linear-gradient(to right, #E30A17, #E30A17 33%, #009B48 33%, #009B48 66%, #0096FF 66%, #0096FF 100%);
 }
+
 
 /* Header Styles */
 header {
-  padding: 10px 0; /* Adjusted padding */
+  padding: 10px 0;
   background-color: var(--white);
   box-shadow: var(--shadow);
   width: 100%;
   margin: 0;
-  position: sticky; /* Başlığı yuxarıda saxlamaq üçün */
+  position: sticky;
   top: 0;
-  z-index: 1000; /* Digər elementlərin üzərində qalması üçün */
+  z-index: 1000;
 }
 
 .header-content {
@@ -110,27 +103,27 @@ header {
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px; /* Yan boşluqlar */
+  padding: 0 20px;
 }
 
 .logo {
   display: flex;
   align-items: center;
-  flex-shrink: 0; /* Kiçik ekranlarda logonun sıxılmaması üçün */
+  flex-shrink: 0;
 }
 
 .logo-icon {
   background: var(--gradient);
   color: var(--white);
-  width: 50px; /* Biraz kiçildildi */
-  height: 50px; /* Biraz kiçildildi */
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.3rem; /* Biraz kiçildildi */
-  border-radius: 8px; /* Dəyişdirildi */
-  margin-right: 10px; /* Dəyişdirildi */
+  font-size: 1.3rem;
+  border-radius: 8px;
+  margin-right: 10px;
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -147,7 +140,7 @@ header {
 }
 
 .logo-text h1 {
-  font-size: 1.5rem; /* Biraz kiçildildi */
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--dark);
   margin: 0;
@@ -156,33 +149,33 @@ header {
 
 .logo-text p {
   color: #555;
-  font-size: 0.8rem; /* Biraz kiçildildi */
+  font-size: 0.8rem;
   margin: 0;
 }
 
 .header-actions .bmc-button-header img {
-  height: 38px; /* Başlıq üçün uyğun ölçü */
+  height: 38px;
   width: auto;
   display: block;
-  border-radius: 6px; /* BMC şəklinin özündəki border-radius-u tətbiq etmək üçün */
+  border-radius: 6px;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
+
 .header-actions .bmc-button-header img:hover {
   transform: scale(1.05);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 
 /* Main Content */
 main {
   flex: 1;
-  padding: 30px 20px; /* Başlıq sticky olduğu üçün padding-top əlavə etməyə ehtiyac yoxdur, çünki app-container flex-start edir */
+  padding: 30px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-top: 10px; /* Header hündürlüyü qədər boşluq buraxmaq üçün, dəqiq ölçüyə görə tənzimləyin */
-                   /* Əgər header sticky olmasa, bu margin-top lazım deyil */
+  margin-top: 10px;
 }
 
 .card {
@@ -218,6 +211,35 @@ main {
   line-height: 1.5;
 }
 
+.excuse-count {
+  margin-top: 15px;
+  font-size: 0.95rem;
+  color: #666;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #e0f7fa;
+  padding: 8px 15px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.excuse-count i {
+  color: var(--blue);
+  font-size: 1.1rem;
+}
+
+.excuse-count span {
+  font-weight: 700;
+  color: var(--dark);
+}
+
+
 /* Important Notice Styles */
 .important-notice {
   background-color: #fff3cd;
@@ -225,7 +247,7 @@ main {
   border: 1px solid #ffeeba;
   border-radius: 8px;
   padding: 15px 20px;
-  margin-bottom: 25px; /* Formadan əvvəlki boşluq artırıldı */
+  margin-bottom: 25px;
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.5;
@@ -239,26 +261,6 @@ main {
   font-weight: 600;
 }
 
-/* Support Button Styles (köhnə, artıq istifadə edilmir) */
-/*
-.support-button-container {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
-.bmc-button img {
-  border-radius: 8px !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-  height: auto;
-  max-width: 220px;
-}
-
-.bmc-button img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-*/
 
 /* Form Elements */
 .form-container {
@@ -297,7 +299,7 @@ select:focus {
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
 }
 
-#category-select.changed { /* JS-dən gələn class üçün stil */
+#category-select.changed {
   border-color: var(--green);
   box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
 }
@@ -326,9 +328,9 @@ select {
   cursor: pointer;
 }
 
-.yox-button {
+.yox-button,
+.random-category-button {
   grid-column: 1 / -1;
-  background: var(--gradient);
   color: var(--white);
   border: none;
   padding: 14px 25px;
@@ -341,6 +343,10 @@ select {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
+}
+
+.yox-button {
+  background: var(--gradient);
   box-shadow: 0 4px 10px rgba(0, 123, 255, 0.35);
 }
 
@@ -349,9 +355,28 @@ select {
   box-shadow: 0 6px 15px rgba(0, 123, 255, 0.45);
 }
 
-.yox-button:active, .yox-button.clicked { /* .clicked classı üçün stil */
+.yox-button:active,
+.yox-button.clicked {
   transform: translateY(1px) scale(0.98);
   box-shadow: 0 2px 5px rgba(0, 123, 255, 0.35);
+}
+
+.random-category-button {
+  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  /* Darker gray gradient */
+  box-shadow: 0 4px 10px rgba(108, 117, 125, 0.35);
+  margin-bottom: 10px;
+  /* Space between random and YOX button */
+}
+
+.random-category-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(108, 117, 125, 0.45);
+}
+
+.random-category-button:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 5px rgba(108, 117, 125, 0.35);
 }
 
 .button-text {
@@ -432,7 +457,154 @@ select {
   color: var(--dark);
   word-wrap: break-word;
   white-space: pre-wrap;
+  margin-bottom: 20px;
+  /* Space before action buttons */
 }
+
+.result-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.action-button {
+  background-color: var(--blue);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.action-button:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.copy-button {
+  background-color: var(--blue);
+}
+
+.copy-button.success {
+  background-color: var(--success-color);
+}
+
+.share-button {
+  background-color: #6c757d;
+  /* A neutral gray for share */
+}
+
+.share-button.success {
+  background-color: var(--success-color);
+}
+
+
+/* History Container */
+.history-container {
+  margin-top: 40px;
+  background-color: #f1f3f5;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e9ecef;
+  display: none;
+  /* Hidden by default, shown by JS if history exists */
+}
+
+.history-container h3 {
+  text-align: center;
+  color: var(--dark);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  position: relative;
+}
+
+.history-container h3:after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background-color: var(--blue);
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.history-item {
+  background-color: var(--white);
+  border: 1px solid var(--gray);
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.history-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-color: var(--blue);
+}
+
+.history-item.highlight {
+  background-color: #e6ffed;
+  /* Light green for highlight */
+  border-color: var(--success-color);
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+  transform: scale(1.01);
+}
+
+
+.history-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.history-category {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--blue);
+  background-color: #e0f7fa;
+  padding: 4px 10px;
+  border-radius: 15px;
+}
+
+.history-time {
+  font-size: 0.75rem;
+  color: #888;
+}
+
+.history-message {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.5;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
 
 /* Animation for result */
 @keyframes fadeIn {
@@ -485,21 +657,25 @@ footer {
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-content {
-    padding: 0 15px; /* Kiçik ekranlarda yan boşluqları azaltmaq */
+    padding: 0 15px;
   }
+
   .logo-text h1 {
     font-size: 1.3rem;
   }
+
   .logo-text p {
     font-size: 0.75rem;
   }
+
   .header-actions .bmc-button-header img {
-    height: 34px; /* Mobil üçün daha kiçik */
+    height: 34px;
   }
 
   .main {
-      margin-top: 5px; /* sticky header üçün boşluq */
+    margin-top: 5px;
   }
+
   .form-container {
     grid-template-columns: 1fr;
     grid-gap: 15px;
@@ -519,12 +695,17 @@ footer {
   }
 
   .result-container {
-    padding: 30px 20px 20px 20px;
+    padding: 35px 20px 20px 20px;
   }
 
   .result-badge {
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  .action-button {
+    padding: 8px 15px;
+    font-size: 0.85rem;
   }
 }
 
@@ -536,15 +717,9 @@ footer {
   header {
     padding: 8px 0;
   }
-  .header-content {
-     /* Flex-wrap əlavə edərək kiçik ekranlarda elementlərin alt-alta düşməsini təmin etmək olar */
-     /* Amma bu halda BMC düyməsi logonun altına düşəcək, bu da istənilməyə bilər. */
-     /* Alternativ olaraq logo mətni kiçildilə və ya gizlədilə bilər */
-  }
 
-  .logo {
-    /* flex-direction: column; Bu başlığı çox dəyişdirər */
-    /* text-align: center; */
+  .header-content {
+    /* Consider flex-wrap or hiding logo text for very small screens */
   }
 
   .logo-icon {
@@ -553,15 +728,18 @@ footer {
     font-size: 1.1rem;
     margin-right: 8px;
   }
+
   .logo-text h1 {
-    font-size: 1.1rem; /* Çox kiçik ekranlar üçün */
+    font-size: 1.1rem;
   }
+
   .logo-text p {
-    /* display: none; // Ən kiçik ekranlarda gizlətmək olar */
+    /* display: none; // Can hide for smallest screens */
     font-size: 0.7rem;
   }
+
   .header-actions .bmc-button-header img {
-    height: 32px; /* Ən kiçik ekranlar üçün */
+    height: 32px;
   }
 
 
@@ -585,7 +763,8 @@ footer {
 
   input,
   select,
-  .yox-button {
+  .yox-button,
+  .random-category-button {
     padding: 10px;
     font-size: 0.95rem;
   }
@@ -606,16 +785,42 @@ footer {
   .footer-content p {
     font-size: 0.8rem;
   }
+
+  .history-container {
+    padding: 20px;
+  }
+
+  .history-container h3 {
+    font-size: 1.2rem;
+  }
+
+  .history-item {
+    padding: 12px;
+  }
+
+  .history-category {
+    font-size: 0.8rem;
+  }
+
+  .history-time {
+    font-size: 0.7rem;
+  }
+
+  .history-message {
+    font-size: 0.9rem;
+  }
 }
 
-@media (max-width: 380px) { /* Xüsusilə kiçik ekranlar üçün */
-    .logo-text p {
-        display: none; /* API subtitle-ı gizlədək */
-    }
-    .logo-text h1 {
-        font-size: 1rem;
-    }
-    .header-actions .bmc-button-header img {
-      height: 30px;
-    }
+@media (max-width: 380px) {
+  .logo-text p {
+    display: none;
+  }
+
+  .logo-text h1 {
+    font-size: 1rem;
+  }
+
+  .header-actions .bmc-button-header img {
+    height: 30px;
+  }
 }
