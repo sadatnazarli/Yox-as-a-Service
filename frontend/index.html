@@ -1,41 +1,35 @@
 <!DOCTYPE html>
 <html lang="az">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>YOX API | Azərbaycan Bəhanə Servisi - YOX-as-a-Service</title>
 
-  <meta name="description"
-    content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin: sevgi, iş, dostlar və gündəlik həyat üçün hazır cavablar, kateqoriyalar və API endpoint-ləri. Sürətli, sadə və istifadəyə hazır bəhanə servisi.">
+  <meta name="description" content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin: sevgi, iş, dostlar və gündəlik həyat üçün hazır cavablar, kateqoriyalar və API endpoint-ləri. Sürətli, sadə və istifadəyə hazır bəhanə servisi.">
 
-  <link rel="canonical" href="{{ url_for('index', _external=True) }}">
+  <link rel="canonical" href="https://yoxapi.fun/">
 
   <meta property="og:title" content="YOX API | Azərbaycan Bəhanə Servisi - YOX-as-a-Service">
-  <meta property="og:description"
-    content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin: sevgi, iş, dostlar və gündəlik həyat üçün hazır cavablar, kateqoriyalar və API endpoint-ləri. Sürətli, sadə və istifadəyə hazır bəhanə servisi.">
+  <meta property="og:description" content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin: sevgi, iş, dostlar və gündəlik həyat üçün hazır cavablar, kateqoriyalar və API endpoint-ləri. Sürətli, sadə və istifadəyə hazır bəhanə servisi.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ url_for('index', _external=True) }}">
-  <meta property="og:image" content="{{ url_for('static', filename='img/og-yox.png', _external=True) }}">
+  <meta property="og:url" content="https://yoxapi.fun/">
+  <meta property="og:image" content="https://yoxapi.fun/static/img/og-yox.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="YOX API — Azərbaycan Bəhanə Servisi">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="YOX API | Azərbaycan Bəhanə Servisi - YOX-as-a-Service">
-  <meta name="twitter:description"
-    content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin: sevgi, iş, dostlar və gündəlik həyat üçün hazır cavablar, kateqoriyalar və API endpoint-ləri. Sürətli, sadə və istifadəyə hazır bəhanə servisi.">
-  <meta name="twitter:image" content="{{ url_for('static', filename='img/og-yox.png', _external=True) }}">
+  <meta name="twitter:description" content="YOX API ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin: sevgi, iş, dostlar və gündəlik həyat üçün hazır cavablar, kateqoriyalar və API endpoint-ləri. Sürətli, sadə və istifadəyə hazır bəhanə servisi.">
+  <meta name="twitter:image" content="https://yoxapi.fun/static/img/og-yox.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="shortcut icon" href="{{ url_for('static', filename='img/logo.png') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="/static/img/logo.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="/static/css/style.css">
 
   <script type="application/ld+json">
   {
@@ -45,7 +39,7 @@
     "alternateName": "YOX-as-a-Service",
     "description": "YOX API (YOX-as-a-Service) ilə Azərbaycansayağı mədəni 'YOX' bəhanələri əldə edin. Bu bəhanə API-si və veb servisi ümumi, sevgi, iş və digər müxtəlif kateqoriyalarda hazır cavablar təqdim edir.",
     "applicationCategory": "Utility",
-    "operatingSystem": "Any (Web-based)",
+    "operatingSystem": "Web",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -55,7 +49,7 @@
       "@type": "Organization",
       "name": "YOX-as-a-Service"
     },
-    "url": "{{ url_for('index', _external=True) }}"
+    "url": "https://yoxapi.fun/"
   }
   </script>
 </head>
@@ -76,8 +70,7 @@
         <div class="header-actions">
           <a href="/api_docs.html" class="header-link">API Sənədləşdirmə</a>
           <button id="why-yox-button" class="header-link">Niyə YOX?</button>
-          <a href="https://buymeacoffee.com/sedatnazarli" target="_blank" class="bmc-button-header"
-            aria-label="Mənə kofe al">
+          <a href="https://buymeacoffee.com/sedatnazarli" target="_blank" class="bmc-button-header" aria-label="Mənə kofe al">
             <img
               src="https://img.buymeacoffee.com/button-api/?text=Mənə kofe al&emoji=☕&slug=sedatnazarli&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=7F7F7F"
               alt="Mənə kofe al">
@@ -98,8 +91,7 @@
           </div>
 
           <div class="important-notice">
-            <p><strong>Vacib Məlumat:</strong> Backend serverimiz pulsuz Render planında yerləşdiyi üçün API
-              cavablarının gəlməsində gecikmələr ola bilər. Anlayışınız və səbriniz üçün təşəkkür edirik!</p>
+            <p><strong>Vacib Məlumat:</strong> Backend serverimiz pulsuz Render planında yerləşdiyi üçün API cavablarının gəlməsində gecikmələr ola bilər. Anlayışınız və səbriniz üçün təşəkkür edirik!</p>
           </div>
 
           <div class="form-container">
@@ -199,8 +191,7 @@
 
           <div id="history-container" class="history-container">
             <h3>Son Bəhanələr</h3>
-            <div id="history-list" class="history-list">
-            </div>
+            <div id="history-list" class="history-list"></div>
           </div>
 
         </div>
@@ -221,21 +212,15 @@
     <div class="modal-content">
       <span class="close-button">&times;</span>
       <h2>Niyə "YOX"?</h2>
-      <p>Azərbaycan mədəniyyətində "yox" demək bəzən birbaşa rədd etməkdən daha incə və dolaylı yollarla ifadə olunur.
-        Bu, qarşı tərəfi incitməmək, münasibətləri qorumaq və ya sadəcə olaraq mədəni nəzakət qaydalarına riayət etmək
-        məqsədi daşıyır.</p>
-      <p>Birbaşa "yox" əvəzinə, insanlar tez-tez müxtəlif bəhanələr gətirirlər. Bu bəhanələr vəziyyətdən, münasibətin
-        növündən (dost, ailə, iş) və mövzudan asılı olaraq dəyişir. Məsələn, "evdə qonaq var", "işim çıxdı", "başım
-        qarışıqdır" kimi ifadələr geniş yayılmışdır.</p>
-      <p>YOX API-nin məqsədi məhz bu mədəni nüansı əks etdirmək və istifadəçilərə müxtəlif vəziyyətlər üçün Azərbaycan
-        tərzində "yox" deməyə kömək etməkdir. Bu, həm əyləncəli, həm də mədəniyyəti anlamaq üçün bir vasitədir.</p>
+      <p>Azərbaycan mədəniyyətində "yox" demək bəzən birbaşa rədd etməkdən daha incə və dolaylı yollarla ifadə olunur. Bu, qarşı tərəfi incitməmək, münasibətləri qorumaq və ya sadəcə olaraq mədəni nəzakət qaydalarına riayət etmək məqsədi daşıyır.</p>
+      <p>Birbaşa "yox" əvəzinə, insanlar tez-tez müxtəlif bəhanələr gətirirlər. Bu bəhanələr vəziyyətdən, münasibətin növündən (dost, ailə, iş) və mövzudan asılı olaraq dəyişir. Məsələn, "evdə qonaq var", "işim çıxdı", "başım qarışıqdır" kimi ifadələr geniş yayılmışdır.</p>
+      <p>YOX API-nin məqsədi məhz bu mədəni nüansı əks etdirmək və istifadəçilərə müxtəlif vəziyyətlər üçün Azərbaycan tərzində "yox" deməyə kömək etməkdir. Bu, həm əyləncəli, həm də mədəniyyəti anlamaq üçün bir vasitədir.</p>
     </div>
   </div>
 
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="/static/js/script.js"></script>
   <script>
     document.getElementById('current-year').textContent = new Date().getFullYear();
   </script>
 </body>
-
 </html>
